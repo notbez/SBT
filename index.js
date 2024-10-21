@@ -1,0 +1,33 @@
+const axios = require('axios');
+
+// Токен бота, который ты получил от BotFather
+const BOT_TOKEN = '7361400739:AAEL_zr8ykRikwognxqRVKHDb_s-Bltv8_g'; 
+
+// ID пользователя или чата, куда отправить сообщение
+const CHAT_ID = '1322759567'; 
+
+// Ссылка на твоё приложение (например, с GitHub Pages)
+const WEB_APP_URL = 'https://github.com/notbez/bot.git';
+
+// Функция для отправки сообщения с кнопкой Web App
+function sendWebAppButton() {
+    axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        chat_id: CHAT_ID,
+        text: 'Открыть SBT Manager',
+        reply_markup: {
+            inline_keyboard: [[{
+                text: 'Открыть SBT Manager',
+                web_app: { url: WEB_APP_URL } // Ваша ссылка на miniapp
+            }]]
+        }
+    })
+    .then(response => {
+        console.log('Сообщение отправлено:', response.data);
+    })
+    .catch(error => {
+        console.error('Ошибка при отправке сообщения:', error);
+    });
+}
+
+// Вызов функции для отправки сообщения
+sendWebAppButton();

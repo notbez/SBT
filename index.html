@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniapp: SBT Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header>
+            <h1>SBT Manager</h1>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#" data-tab="available" class="active">Available SBT</a></li>
+                <li><a href="#" data-tab="missed">Missed SBT</a></li>
+                <li><a href="#" data-tab="my-sbt">My SBT</a></li>
+            </ul>
+        </nav>
+
+        <section id="content">
+            <div id="available" class="tab active">
+                <h2>Available SBT</h2>
+                <div class="sbt-list" id="available-sbt-list">
+                    <!-- SBT блоки будут здесь -->
+                </div>
+            </div>
+            <div id="missed" class="tab">
+                <h2>Missed SBT</h2>
+                <div class="sbt-list" id="missed-sbt-list">
+                    <!-- SBT блоки будут здесь -->
+                </div>
+            </div>
+            <div id="my-sbt" class="tab">
+                <h2>My SBT</h2>
+                <div class="sbt-list" id="my-sbt-list">
+                    <!-- SBT блоки будут здесь -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
