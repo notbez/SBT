@@ -1,46 +1,33 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miniapp: SBT Manager</title>
+    <title>MiniApp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#" class="active" data-tab="available-sbt">Available SBTs</a></li>
+            <li><a href="#" data-tab="missed-sbt">Missed SBTs</a></li>
+            <li><a href="#" data-tab="my-sbt">My SBTs</a></li>
+        </ul>
+    </nav>
 
-    <div class="app">
-        <header>
-            <h1>SBT Manager</h1>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#" data-tab="available" class="active">Available SBT</a></li>
-                <li><a href="#" data-tab="missed">Missed SBT</a></li>
-                <li><a href="#" data-tab="my-sbt">My SBT</a></li>
-            </ul>
-        </nav>
+    <div id="available-sbt" class="tab active">
+        <h2>Available SBTs</h2>
+        <div id="available-sbt-list"></div>
+    </div>
 
-        <section id="content">
-            <div id="available" class="tab active">
-                <h2>Available SBT</h2>
-                <div class="sbt-list" id="available-sbt-list">
-                    <!-- SBT блоки будут здесь -->
-                </div>
-            </div>
-            <div id="missed" class="tab">
-                <h2>Missed SBT</h2>
-                <div class="sbt-list" id="missed-sbt-list">
-                    <!-- SBT блоки будут здесь -->
-                </div>
-            </div>
-            <div id="my-sbt" class="tab">
-                <h2>My SBT</h2>
-                <div class="sbt-list" id="my-sbt-list">
-                    <!-- SBT блоки будут здесь -->
-                </div>
-            </div>
-        </section>
+    <div id="missed-sbt" class="tab">
+        <h2>Missed SBTs</h2>
+        <div id="missed-sbt-list"></div>
+    </div>
+
+    <div id="my-sbt" class="tab">
+        <h2>My SBTs</h2>
+        <div id="my-sbt-list"></div>
     </div>
 
     <script src="app.js"></script>
