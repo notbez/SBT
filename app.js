@@ -1,7 +1,7 @@
 // Данные для примера SBT
 const availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '28.10.2026', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '31.01.2026', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '28.10.2024', image: 'https://via.placeholder.com/150' },
+    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '30.10.2025', image: 'https://via.placeholder.com/150' },
 ];
 
 const missedSBTs = [];
@@ -39,33 +39,22 @@ function renderSBTs(listId, sbtArray, showDetails = false) {
                 <p><strong>Code:</strong> ${sbt.code}</p>
                 <p><strong>Deadline:</strong> ${sbt.deadline}</p>
                 <button class="complete-btn" data-link="${sbt.link}">COMPLETED!</button>
-                <button id="back-btn" class="complete-btn" style="background-color: gray;">Back to Main</button>
             `;
         }
 
         sbtItem.innerHTML = content;
 
-        // Добавляем обработчик для кнопки "COMPLETED!"
+        // Добавляем обработчик для кнопки COMPLETED!
         if (showDetails) {
             sbtItem.querySelector('.complete-btn').addEventListener('click', function() {
-                const targetLink = this.getAttribute('data-link');
-                if (targetLink) {
-                    window.location.href = targetLink;
-                }
-            });
-
-            // Обработчик для кнопки "Back to Main"
-            document.getElementById('back-btn').addEventListener('click', function() {
-                renderSBTs('available-sbt-list', availableSBTs);  // Возврат к списку SBT
+                window.location.href = this.getAttribute('data-link');
             });
         }
 
-        // Добавляем обработчик для открытия детальной информации о SBT
-        if (!showDetails) {
-            sbtItem.addEventListener('click', function() {
-                renderSBTs(listId, [sbt], true);  // Показ деталей при клике
-            });
-        }
+        // Добавляем обработчик для открытия детальной информации
+        sbtItem.addEventListener('click', function() {
+            renderSBTs(listId, [sbt], true);
+        });
 
         listElement.appendChild(sbtItem);
     });
@@ -73,7 +62,9 @@ function renderSBTs(listId, sbtArray, showDetails = false) {
 
 // Инициализация всех данных
 function init() {
-    checkDeadlines();  // Переносим истекшие SBT
+    checkDeadlines();
+    console.log('Available SBTs:', availableSBTs);  // Проверка содержимого
+    console.log('Missed SBTs:', missedSBTs);        // Проверка содержимого
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
     renderSBTs('my-sbt-list', mySBTs);
