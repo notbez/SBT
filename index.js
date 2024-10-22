@@ -7,7 +7,7 @@ const BOT_TOKEN = '7361400739:AAEL_zr8ykRikwognxqRVKHDb_s-Bltv8_g';
 const CHAT_ID = '1322759567'; 
 
 // Ссылка на твоё приложение (например, с GitHub Pages)
-const WEB_APP_URL = 'https://github.com/notbez/bot.git';
+const WEB_APP_URL = 'https://notbez.github.io/SBT/';
 
 // Функция для отправки сообщения с кнопкой Web App
 function sendWebAppButton() {
