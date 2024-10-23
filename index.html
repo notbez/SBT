@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniApp</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My MiniApp</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#" class="active" data-tab="available-sbt">Available SBTs</a></li>
-            <li><a href="#" data-tab="missed-sbt">Missed SBTs</a></li>
-            <li><a href="#" data-tab="my-sbt">My SBTs</a></li>
-        </ul>
-    </nav>
-
-    <div id="available-sbt" class="tab active">
-        <h2>Available SBTs</h2>
+    <div id="main">
+        <h1>Available SBTs</h1>
         <div id="available-sbt-list"></div>
     </div>
 
-    <div id="missed-sbt" class="tab">
-        <h2>Missed SBTs</h2>
+    <div id="missed">
+        <h1>Missed SBTs</h1>
         <div id="missed-sbt-list"></div>
     </div>
 
-    <div id="my-sbt" class="tab">
-        <h2>My SBTs</h2>
-        <div id="my-sbt-list"></div>
+    <div id="my-sbt">
+        <h1>My SBT</h1>
+        <div id="my-sbt-list" class="soon">Soon...</div>
     </div>
 
     <script src="app.js"></script>

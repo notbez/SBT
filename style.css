@@ -2,43 +2,53 @@ body {
     font-family: Arial, sans-serif;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: black;
-}
-
-nav ul li a.active {
-    font-weight: bold;
-}
-
-.tab {
-    display: none;
-}
-
-.tab.active {
-    display: block;
+h1 {
+    text-align: center;
+    margin-top: 20px;
 }
 
 .sbt-item {
+    margin: 20px;
+    padding: 20px;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    text-align: center;
 }
 
-button.complete-btn {
-    padding: 5px 10px;
-    background-color: green;
+.complete-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.complete-btn:hover {
+    background-color: #45a049;
+}
+
+/* Стили для кнопки "Back to Main" */
+.back-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #333;
+}
+
+.soon {
+    text-align: center;
+    font-size: 24px;
+    color: #888;
+    margin-top: 50px;
 }
