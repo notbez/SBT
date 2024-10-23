@@ -1,6 +1,6 @@
 // Массив доступных SBT
 const availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2022-12-01', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2024-12-01', image: 'https://via.placeholder.com/150' },
     { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
 ];
 
@@ -32,8 +32,8 @@ function renderSBTs(listId, sbtArray, showDetails = false) {
         sbtItem.classList.add('sbt-item');
 
         let content = `
-            <h3>${sbt.title}</h3>
-            <img src="${sbt.image}" alt="SBT Image" style="width: 150px; height: 150px;">
+            <img src="${sbt.image}" alt="SBT Image">
+            <button class="grab-btn">Grab SBT</button>
         `;
 
         // Добавляем детальную информацию о SBT, если требуется
@@ -90,11 +90,34 @@ function init() {
     // Инициализация Telegram WebApp API
     if (window.Telegram && window.Telegram.WebApp) {
         console.log("Telegram Web App API инициализирован");
-        window.Telegram.WebApp.ready();
-    } else {
-        console.log("Telegram Web App API недоступен");
+        Telegram.WebApp.ready();
     }
+
+    // Обработчики для вкладок
+    document.getElementById('available-tab').addEventListener('click', function() {
+        showSection('main');
+    });
+
+    document.getElementById('missed-tab').addEventListener('click', function() {
+        showSection('missed');
+    });
+
+    document.getElementById('my-sbt-tab').addEventListener('click', function() {
+        showSection('my-sbt');
+    });
 }
 
-// Запускаем приложение после загрузки DOM
-window.addEventListener('DOMContentLoaded', init);
+// Функция переключения секций
+function showSection(sectionId) {
+    document.querySelectorAll('main section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+
+    // Снимаем класс active с кнопок и добавляем его активной вкладке
+    document.querySelectorAll('nav button').forEach(button => button.classList.remove('active'));
+    document.querySelector(`nav button[id="${sectionId}-tab"]`).classList.add('active');
+}
+
+// Запускаем приложение
+init();

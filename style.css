@@ -1,51 +1,117 @@
+/* Основные стили */
 body {
+    background-color: #4E4E4E;
+    color: white;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    background-color: #4E4E4E;
+    padding: 20px;
 }
 
 h1 {
-    text-align: center;
-    margin-top: 20px;
+    font-size: 36px;
+    color: #FFFFFF;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.sbt-item {
-    margin: 20px;
+/* Навигация (вкладки) */
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #4E4E4E;
+    padding: 10px 0;
+}
+
+nav button {
+    background-color: #4E4E4E;
+    color: #FFFFFF;
+    border: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+nav button.active {
+    background-color: #666;
+}
+
+nav button:hover {
+    background-color: #666;
+}
+
+/* Основная секция */
+main {
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
 }
 
-.complete-btn {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+h2 {
+    display: none; /* Скрываем заголовки секций */
 }
 
-.complete-btn:hover {
-    background-color: #45a049;
+/* Контейнер для SBT */
+.sbt-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
 }
 
-/* Стили для кнопки "Back to Main" */
-.back-btn {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.back-btn:hover {
+/* Элементы SBT */
+.sbt-item {
     background-color: #333;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
+.sbt-item img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+/* Кнопка "Grab SBT" */
+.grab-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.grab-btn:hover {
+    background-color: #666;
+}
+
+/* Эффект полупрозрачного скролла */
+.sbt-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(78, 78, 78, 0), rgba(78, 78, 78, 1));
+}
+
+/* Стили для "Soon..." */
 .soon {
     text-align: center;
     font-size: 24px;
