@@ -1,7 +1,7 @@
 // Массив доступных SBT
 const availableSBTs = [
     { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2024-12-01', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2023-10-30', image: 'https://via.placeholder.com/150' },
 ];
 
 // Массив пропущенных SBT
