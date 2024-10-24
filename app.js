@@ -33,7 +33,7 @@ function renderSBTs(listId, sbtArray, showDetails = false) {
 
         let content = `
             <img src="${sbt.image}" alt="SBT Image">
-            <button class="grab-btn">Grab SBT</button>
+            ${showDetails ? '' : '<button class="grab-btn">Grab SBT</button>'}  <!-- Кнопка пропадает при детализации -->
         `;
 
         // Добавляем детальную информацию о SBT, если требуется
@@ -110,14 +110,13 @@ function init() {
 // Функция переключения секций
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => {
-        section.style.display = 'none';
+        section.style.display = section.id === sectionId ? 'block' : 'none';
     });
-    document.getElementById(sectionId).style.display = 'block';
 
-    // Снимаем класс active с кнопок и добавляем его активной вкладке
-    document.querySelectorAll('nav button').forEach(button => button.classList.remove('active'));
-    document.querySelector(`nav button[id="${sectionId}-tab"]`).classList.add('active');
+    document.querySelectorAll('nav button').forEach(button => {
+        button.classList.toggle('active', button.id.includes(sectionId));
+    });
 }
 
-// Запускаем приложение
-init();
+// Запускаем приложение после загрузки DOM
+document.addEventListener('DOMContentLoaded', init);
