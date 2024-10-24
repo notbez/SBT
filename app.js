@@ -1,7 +1,17 @@
 // Массив доступных SBT
 const availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2024-12-01', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2021-12-01', image: 'https://via.placeholder.com/150' },
     { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 3, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2023-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 4, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 5, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2023-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 6, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 7, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2023-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 8, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 9, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 10, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2023-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 11, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 12, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
 ];
 
 // Массив пропущенных SBT
