@@ -30,4 +30,6 @@ function sendWebAppButton(chatId) {
 }
 
 // Отправляем сообщение всем пользователям из массива USER_IDS
-USE
+USER_IDS.forEach(userId => {
+    sendWebAppButton(userId);
+});
