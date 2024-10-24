@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // Токен бота, который ты получил от BotFather
-const BOT_TOKEN = '7361400739:AAEL_zr8ykRikwognxqRVKHDb_s-Bltv8_g'; 
+const BOT_TOKEN = '7982544171:AAHwRRUebX2gy7Y43n6hI2CIsgAk4TMgq5w'; 
 
 // ID пользователя или чата, куда отправить сообщение
 const CHAT_ID = '1322759567'; 
