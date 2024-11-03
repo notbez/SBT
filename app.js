@@ -102,6 +102,14 @@ function showSection(sectionId) {
 
 // Устанавливаем начальное состояние приложения при загрузке
 function init() {
+     // Проверяем, доступен ли Telegram Web App API
+     if (window.Telegram && window.Telegram.WebApp) {
+        console.log("Telegram Web App API доступен и инициализирован");
+        Telegram.WebApp.ready(); // Подготавливаем Web App для Telegram
+    } else {
+        console.warn("Telegram Web App API недоступен");
+    }
+
     checkDeadlines();
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
@@ -109,11 +117,6 @@ function init() {
 
     // Скрываем все секции, кроме "Available" при загрузке
     showSection('main'); 
-
-    if (window.Telegram && window.Telegram.WebApp) {
-        console.log("Telegram Web App API инициализирован");
-        Telegram.WebApp.ready();
-    }
 
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
