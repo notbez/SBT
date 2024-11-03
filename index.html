@@ -5,34 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBT Collector</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <header>
-        <div>
-            <h1>SBT Collector</h1>
-            <hr class="header-line">  <!-- Линия под заголовком -->
+        <div class="header-content"> <!-- Новый контейнер -->
+            <div class="logo">
+                <img src="/Logo Vector (1).svg" alt="Logo">
+            </div>
+            <div class="text">
+                <h1>Soulbound or SBT is a type of NFT asset 
+                    that is issued in a single copy and permanently 
+                    linked to a single blockchain address...</h1>
+            </div>
         </div>
+        <hr class="header-line">  <!-- Линия под заголовком -->
     </header>
 
+
     <nav>
-        <button id="available-tab" class="active">Available</button>
+        <button id="available-tab">Available</button>
         <button id="missed-tab">Missed</button>
-        <button id="my-sbt-tab">Profile</button>
+        <button id="my-sbt-tab">My SBT</button>
     </nav>
 
-    <main id="content">
-        <section id="main">
+    <main>
+        <section id="main"> 
             <div id="available-sbt-list" class="sbt-container"></div>
         </section>
-
+        
         <section id="missed">
             <div id="missed-sbt-list" class="sbt-container"></div>
         </section>
-
+        
         <section id="my-sbt">
-            <div id="my-sbt-list" class="sbt-container soon">soon...</div>
+
+            <div class="soon">Soon...</div>
+            <div id="my-sbt-list" class="sbt-container"></div>
         </section>
+        
     </main>
+    
+    <div id="sbt-fullscreen-container"></div>
+    
+    
 
     <script src="app.js"></script>
 </body>
