@@ -1,13 +1,11 @@
 // Массив доступных SBT
 const availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2021-12-01', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2021-12-01', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2021-12-01', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
-    { id: 1, title: 'SBT #1', link: 'https://example.com', code: '8#683', deadline: '2021-12-01', image: 'https://via.placeholder.com/150' },
-    { id: 2, title: 'SBT #2', link: 'https://example.com', code: '9#684', deadline: '2024-10-30', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'N1GrowthLikets', deadline: '13.11.2024 - 22:00', image: 'https://via.placeholder.com/150' },
+    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinspb24', deadline: '15.11.2024 - 22:00', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://via.placeholder.com/150' },
+    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://via.placeholder.com/150' },
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://via.placeholder.com/150' },
+    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://via.placeholder.com/150' },
     
     // добавьте остальные элементы по вашему примеру
 ];
@@ -62,7 +60,9 @@ function showSBTFullScreen(sbt) {
         
         <div class="sbt-info">
             <h2>Guide to obtaining SBT</h2>
-            <p style="margin: 10px;"><strong>Link to SBT:</strong> <a href="${sbt.link}" target="_blank">${sbt.link}</a></p>
+            <p style="margin: 10px;">
+                <strong><a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a></strong>
+            </p>
             <p style="margin: 10px;"><strong>Password:</strong> ${sbt.code}</p>
             <p style="margin: 10px;"><strong>Deadline:</strong> ${sbt.deadline}</p>
         </div>
@@ -90,12 +90,25 @@ function hideSBTFullScreen() {
     sbtContainer.innerHTML = '';
 }
 
-// Инициализация приложения
+function showSection(sectionId) {
+    document.querySelectorAll('main section').forEach(section => {
+        section.style.display = section.id === sectionId ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('nav button').forEach(button => {
+        button.classList.toggle('active', button.id.includes(sectionId));
+    });
+}
+
+// Устанавливаем начальное состояние приложения при загрузке
 function init() {
     checkDeadlines();
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
     renderSBTs('my-sbt-list', mySBTs);
+
+    // Скрываем все секции, кроме "Available" при загрузке
+    showSection('main'); 
 
     if (window.Telegram && window.Telegram.WebApp) {
         console.log("Telegram Web App API инициализирован");
@@ -105,17 +118,6 @@ function init() {
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
     document.getElementById('my-sbt-tab').addEventListener('click', () => showSection('my-sbt'));
-}
-
-// Переключение между секциями
-function showSection(sectionId) {
-    document.querySelectorAll('main section').forEach(section => {
-        section.style.display = section.id === sectionId ? 'block' : 'none';
-    });
-
-    document.querySelectorAll('nav button').forEach(button => {
-        button.classList.toggle('active', button.id.includes(sectionId));
-    });
 }
 
 document.addEventListener('DOMContentLoaded', init);

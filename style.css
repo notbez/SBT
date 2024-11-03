@@ -166,14 +166,14 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px;
     padding: 0px;
-    background-color: #272727;
+    background-color: #303030;
     color: whitesmoke;
 }
 
 header {
     text-align: center;
     padding: 5px 0px ;
-    background-color: #272727;
+    background-color: #303030;
     box-shadow: 0px 0px 20px
 }
 
@@ -202,7 +202,7 @@ nav {
     text-align: center;
     margin: 0px;
     padding: 0px 0;
-    background-color: #272727;
+    background-color: #303030;
     margin-bottom: 0px;
 }
 
@@ -211,7 +211,7 @@ nav button {
     padding: 5px 10px;
     margin: 0 1px;
     border: none;
-    background-color: #272727;
+    background-color: #303030;
     color: rgb(156, 156, 156);
     border-radius: 50px;
     cursor: pointer;
@@ -219,12 +219,12 @@ nav button {
 }
 
 nav button.active {
-    background-color: #303030;
+    background-color: #272727;
     color: whitesmoke;
 }
 
 nav button:hover {
-    background-color: #303030;
+    background-color: #272727;
     color: whitesmoke;
 }
 
@@ -267,7 +267,7 @@ nav button:hover {
     margin: 0px;
     padding: 8px 12px;
     border: none;
-    background-color: #333;
+    background-color: #3B3B3B;
     color: whitesmoke;
     border-radius: 0px 0px 30px 30px;
     cursor: pointer;
@@ -309,10 +309,14 @@ nav button:hover {
 
 /* Секция "Soon..." */
 .soon {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
     text-align: center;
     font-size: 70px;
-    color: #777;
+    color: #1E1E1E;
     margin: 20px 0;
+
+    margin-top: 50%;
 }
 
 
@@ -431,4 +435,20 @@ nav button:hover {
 .logo img {
     max-width: 30px; /* Размер логотипа */
     height: auto;
+}
+
+#missed, #my-sbt {
+    display: none; /* Скрываем секции "Missed" и "My SBT" при загрузке */
+}
+
+.jiji{
+    color: #808080;
+    max-width: 260px;
+    margin: 0 auto;
+    margin-top: 60%;
+}
+
+.bukva{
+    font-weight: bold; /* Делает текст жирным */
+    color: whitesmoke; /* Задает цвет текста */
 }
