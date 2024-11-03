@@ -102,25 +102,30 @@ function showSection(sectionId) {
 
 // Устанавливаем начальное состояние приложения при загрузке
 function init() {
-     // Проверяем, доступен ли Telegram Web App API
-     if (window.Telegram && window.Telegram.WebApp) {
+    console.log("Init function started"); // Лог начала работы функции
+
+    if (window.Telegram && window.Telegram.WebApp) {
         console.log("Telegram Web App API доступен и инициализирован");
-        Telegram.WebApp.ready(); // Подготавливаем Web App для Telegram
+        Telegram.WebApp.ready();
     } else {
         console.warn("Telegram Web App API недоступен");
     }
 
+    // Дальнейший код инициализации
     checkDeadlines();
+    console.log("Deadlines checked");
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
     renderSBTs('my-sbt-list', mySBTs);
 
-    // Скрываем все секции, кроме "Available" при загрузке
-    showSection('main'); 
-
+    showSection('main');
+    
+    // Навигационные обработчики
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
     document.getElementById('my-sbt-tab').addEventListener('click', () => showSection('my-sbt'));
+
+    console.log("Init function completed");
 }
 
 document.addEventListener('DOMContentLoaded', init);
