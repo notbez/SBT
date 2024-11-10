@@ -68,10 +68,23 @@ function renderSBTs(listId, sbtArray) {
     });
 }
 
+// Обработчик нажатия на аппаратную кнопку "Назад"
+window.addEventListener("popstate", () => {
+    const sbtContainer = document.getElementById('sbt-fullscreen-container');
+    if (sbtContainer.style.display === 'flex') {
+        hideSBTFullScreen(); // Закрыть полноэкранный режим, если он открыт
+    } else {
+        showSection('main'); // Вернуться к разделу "Available", если полноэкранный режим уже закрыт
+    }
+});
+
 // Полный экран для SBT
 function showSBTFullScreen(sbt) {
     const sbtContainer = document.getElementById('sbt-fullscreen-container');
     sbtContainer.style.display = 'flex';
+
+    // Добавляем запись в историю при открытии полноэкранного режима
+    history.pushState(null, null, location.href);
 
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
@@ -108,6 +121,9 @@ function hideSBTFullScreen() {
     const sbtContainer = document.getElementById('sbt-fullscreen-container');
     sbtContainer.style.display = 'none';
     sbtContainer.innerHTML = '';
+
+    // Удаляем последнюю запись из истории, чтобы избежать дополнительного нажатия "Назад"
+    history.back();
 }
 
 function showSection(sectionId) {
