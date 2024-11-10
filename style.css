@@ -238,7 +238,7 @@ nav button:hover {
     }
 
 .sbt-item {
-    width: 130px;
+    width: 46.432%;
     padding: 0px;
     background-color: #333;
     border-radius: 30px;
@@ -334,7 +334,7 @@ nav button:hover {
 }
 
 .sbt-fullscreen-content {
-    max-width: 400px;
+    max-width: 90%;
     background: #272727;
     padding: 0px;
     border-radius: 20px;
@@ -451,4 +451,9 @@ nav button:hover {
 .bukva{
     font-weight: bold; /* Делает текст жирным */
     color: whitesmoke; /* Задает цвет текста */
+}
+
+a {
+    color: #d9d9d9; /* Замените на нужный цвет */
+    text-decoration: underline; /* Убирает подчеркивание */
 }
