@@ -8,6 +8,12 @@ const availableSBTs = [
     { id: 6, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
 ];
 
+// Массив предстоящих SBT
+const upcomingSBTs = [
+    { id: 7, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 8, title: 'Upcoming SBT #2', link: 'https://example.com/upcoming2', code: 'UpcomingCode2', releaseDate: '2024-11-11 02:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+];
+
 // Массив пропущенных SBT
 const missedSBTs = [];
 const mySBTs = [];
@@ -43,6 +49,57 @@ function checkDeadlines() {
     });
 }
 
+function checkUpcomingReleases() {
+    const currentDate = new Date();
+    upcomingSBTs.forEach((sbt, index) => {
+        const releaseDate = new Date(sbt.releaseDate);
+        if (releaseDate <= currentDate) {
+            availableSBTs.push(sbt);
+            upcomingSBTs.splice(index, 1);
+        }
+    });
+}
+
+function startCountdown(releaseDate, countdownElement, sbtId) {
+    function updateCountdown() {
+        const now = new Date();
+        const distance = new Date(releaseDate) - now;
+
+        if (distance <= 0) {
+            countdownElement.innerText = "Available now!";
+            clearInterval(interval);
+
+            // Перемещаем SBT в "Available" после истечения времени
+            moveToAvailable(sbtId);
+        } else {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+
+    // Запускаем интервал обновления каждую секунду
+    const interval = setInterval(updateCountdown, 1000);
+}
+
+function moveToAvailable(sbtId) {
+    const index = upcomingSBTs.findIndex(sbt => sbt.id === sbtId);
+    if (index !== -1) {
+        const sbt = upcomingSBTs.splice(index, 1)[0];
+        availableSBTs.push(sbt);
+        
+        // Сохранение изменений
+        saveSBTData();
+        
+        // Перерисовка вкладок
+        renderSBTs('available-sbt-list', availableSBTs);
+        renderUpcomingSBTs(); // Обновляем список upcoming для удаления истекшего SBT
+    }
+}
+
 // Рендеринг SBT в списках
 function renderSBTs(listId, sbtArray) {
     const listElement = document.getElementById(listId);
@@ -63,6 +120,28 @@ function renderSBTs(listId, sbtArray) {
                 showSBTFullScreen(sbt);
             });
         }
+
+        listElement.appendChild(sbtItem);
+    });
+}
+
+function renderUpcomingSBTs() {
+    const listElement = document.getElementById('upcoming-sbt-list');
+    listElement.innerHTML = '';
+
+    upcomingSBTs.forEach(sbt => {
+        const sbtItem = document.createElement('div');
+        sbtItem.classList.add('sbt-item');
+
+        sbtItem.innerHTML = `
+        <img src="${sbt.image}" alt="SBT Image">
+        <div class="countdown1" id="countdown-${sbt.id}">Loading countdown...</div>
+        <button class="grab-btn">View Details</button>
+        `;
+
+
+        const countdownElement = sbtItem.querySelector('.countdown');
+        startCountdown(sbt.releaseDate, countdownElement, sbt.id);
 
         listElement.appendChild(sbtItem);
     });
@@ -116,6 +195,32 @@ function showSBTFullScreen(sbt) {
     });
 }
 
+function showUpcomingSBTFullScreen(sbt) {
+    const sbtContainer = document.getElementById('sbt-fullscreen-container');
+    sbtContainer.style.display = 'flex';
+
+    sbtContainer.innerHTML = `
+    <div class="sbt-fullscreen-content">
+        <img src="${sbt.image}" alt="SBT Image Fullscreen">
+        
+        <div class="sbt-info">
+            <h2>Upcoming SBT</h2>
+            <div class="release"><p><strong>Release Date:</strong> ${sbt.releaseDate}</p></div>
+            <div class="countdown2" id="fullscreen-countdown">Loading countdown...</div>
+        </div>
+
+        <div class="button-container">
+            <button class="close-btn">Back to main</button>
+        </div>
+    </div>
+    `;
+
+    sbtContainer.querySelector('.close-btn').addEventListener('click', hideSBTFullScreen);
+
+    const countdownElement = sbtContainer.querySelector('#fullscreen-countdown');
+    startCountdown(sbt.releaseDate, countdownElement);
+}
+
 // Закрытие полного экрана
 function hideSBTFullScreen() {
     const sbtContainer = document.getElementById('sbt-fullscreen-container');
@@ -134,6 +239,16 @@ function showSection(sectionId) {
     document.querySelectorAll('nav button').forEach(button => {
         button.classList.toggle('active', button.id.includes(sectionId));
     });
+
+    if (sectionId === 'main') {
+        renderSBTs('available-sbt-list', availableSBTs);
+    } else if (sectionId === 'missed') {
+        renderSBTs('missed-sbt-list', missedSBTs);
+    } else if (sectionId === 'my-sbt') {
+        renderSBTs('my-sbt-list', mySBTs);
+    } else if (sectionId === 'upcoming') {
+        renderUpcomingSBTs();
+    }
 }
 
 // Обработка нажатия на кнопку "Complete"
@@ -143,34 +258,35 @@ function onCompleteButtonClick(sbtId) {
         const completedSBT = availableSBTs.splice(sbtIndex, 1)[0];
         missedSBTs.push(completedSBT);
 
+        // Перерисовываем список доступных и пропущенных SBT
         renderSBTs('available-sbt-list', availableSBTs);
         renderSBTs('missed-sbt-list', missedSBTs);
+
         saveSBTData(); // Сохраняем изменения в Local Storage
 
-        showSection('available');
+        // Принудительно переключаемся и возвращаемся на вкладку available
+        showSection('main'); // Переход на вкладку `main` (где находятся доступные SBT)
+
         console.log("SBT перенесён в missed");
     }
 }
 
 // Устанавливаем начальное состояние приложения при загрузке
 function init() {
-    loadSBTData(); // Загружаем данные из Local Storage
+    loadSBTData();
     checkDeadlines();
+    checkUpcomingReleases();
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
-    renderSBTs('my-sbt-list', mySBTs);
 
-    // Скрываем все секции, кроме "Available" при загрузке
-    showSection('main'); 
+    showSection('main');
 
     if (window.Telegram && window.Telegram.WebApp) {
-        console.log("Telegram Web App API инициализирован");
         Telegram.WebApp.ready();
     }
 
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
-    document.getElementById('my-sbt-tab').addEventListener('click', () => showSection('my-sbt'));
+    document.getElementById('upcoming-tab').addEventListener('click', () => showSection('upcoming')); // Новая кнопка для Upcoming
 }
-
 document.addEventListener('DOMContentLoaded', init);
