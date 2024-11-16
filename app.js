@@ -1,6 +1,6 @@
 // Массив доступных SBT
 const availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'N1GrowthLikets', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezah', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
     { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinspb24', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
     { id: 3, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
     { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
@@ -273,45 +273,42 @@ function onCompleteButtonClick(sbtId) {
     }
 }
 
-// Координаты начала и конца свайпа
+// Ваши массивы данных и функции, например, availableSBTs, missedSBTs и т.д.
+
+// Добавляем обработку свайпа
 let touchStartX = 0;
 let touchEndX = 0;
 
-// Отслеживание начала касания
 function handleTouchStart(event) {
     touchStartX = event.touches[0].clientX;
 }
 
-// Отслеживание конца касания
 function handleTouchEnd(event) {
     touchEndX = event.changedTouches[0].clientX;
 
-    // Если свайп идет слева направо (и достаточной длины)
     if (touchEndX - touchStartX > 50) {
-        backToMain(); // Выполнить действие кнопки "Back to main"
+        backToMain();
     }
 }
 
-// Привязка событий к body
 document.body.addEventListener('touchstart', handleTouchStart);
 document.body.addEventListener('touchend', handleTouchEnd);
 
-// Обработчик нажатия аппаратной кнопки "Назад" (Android)
+// Добавляем обработку аппаратной кнопки "Назад"
 window.addEventListener("popstate", () => {
     const sbtContainer = document.getElementById('sbt-fullscreen-container');
     if (sbtContainer.style.display === 'flex') {
-        hideSBTFullScreen(); // Закрыть полноэкранный режим, если он открыт
+        hideSBTFullScreen();
     } else {
-        backToMain(); // Вернуться к главной секции, если полноэкранный режим уже закрыт
+        backToMain();
     }
 });
 
-// Функция для возврата к главной секции
 function backToMain() {
-    showSection('main'); // Переход на главный экран
+    showSection('main');
 }
 
-// Устанавливаем начальное состояние приложения при загрузке
+// Далее идут ваши функции init() и другие
 function init() {
     loadSBTData();
     checkDeadlines();
@@ -327,6 +324,6 @@ function init() {
 
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
-    document.getElementById('upcoming-tab').addEventListener('click', () => showSection('upcoming')); // Новая кнопка для Upcoming
+    document.getElementById('upcoming-tab').addEventListener('click', () => showSection('upcoming'));
 }
 document.addEventListener('DOMContentLoaded', init);
