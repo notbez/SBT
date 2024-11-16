@@ -273,6 +273,44 @@ function onCompleteButtonClick(sbtId) {
     }
 }
 
+// Координаты начала и конца свайпа
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Отслеживание начала касания
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+}
+
+// Отслеживание конца касания
+function handleTouchEnd(event) {
+    touchEndX = event.changedTouches[0].clientX;
+
+    // Если свайп идет слева направо (и достаточной длины)
+    if (touchEndX - touchStartX > 50) {
+        backToMain(); // Выполнить действие кнопки "Back to main"
+    }
+}
+
+// Привязка событий к body
+document.body.addEventListener('touchstart', handleTouchStart);
+document.body.addEventListener('touchend', handleTouchEnd);
+
+// Обработчик нажатия аппаратной кнопки "Назад" (Android)
+window.addEventListener("popstate", () => {
+    const sbtContainer = document.getElementById('sbt-fullscreen-container');
+    if (sbtContainer.style.display === 'flex') {
+        hideSBTFullScreen(); // Закрыть полноэкранный режим, если он открыт
+    } else {
+        backToMain(); // Вернуться к главной секции, если полноэкранный режим уже закрыт
+    }
+});
+
+// Функция для возврата к главной секции
+function backToMain() {
+    showSection('main'); // Переход на главный экран
+}
+
 // Устанавливаем начальное состояние приложения при загрузке
 function init() {
     loadSBTData();
