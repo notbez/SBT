@@ -77,7 +77,7 @@ function startCountdown(releaseDate, countdownElement, sbtId) {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.innerText = `Remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
     }
 
@@ -111,7 +111,7 @@ function renderSBTs(listId, sbtArray) {
 
         sbtItem.innerHTML = `
             <img src="${sbt.image}" alt="SBT Image">
-            <button class="grab-btn">${listId === 'missed-sbt-list' ? "It's over" : 'Grab SBT'}</button>
+            <button class="grab-btn">${listId === 'missed-sbt-list' ? "Expired" : 'Take SBT'}</button>
         `;
 
         // Если SBT в списке "available", добавляем событие для кнопки
@@ -134,14 +134,16 @@ function renderUpcomingSBTs() {
         sbtItem.classList.add('sbt-item');
 
         sbtItem.innerHTML = `
-        <img src="${sbt.image}" alt="SBT Image">
-        <div class="countdown1" id="countdown-${sbt.id}">Loading countdown...</div>
-        <button class="grab-btn">View Details</button>
+            <img src="${sbt.image}" alt="SBT Image">
+            <button class="grab-btn">Watch</button>
         `;
-
 
         const countdownElement = sbtItem.querySelector('.countdown');
         startCountdown(sbt.releaseDate, countdownElement, sbt.id);
+
+        sbtItem.querySelector('.grab-btn').addEventListener('click', () => {
+            showUpcomingSBTFullScreen(sbt);
+        });
 
         listElement.appendChild(sbtItem);
     });
@@ -206,7 +208,7 @@ function showUpcomingSBTFullScreen(sbt) {
         <div class="sbt-info">
             <h2>Upcoming SBT</h2>
             <div class="release"><p><strong>Release Date:</strong> ${sbt.releaseDate}</p></div>
-            <div class="countdown2" id="fullscreen-countdown">Loading countdown...</div>
+            <div class="countdown2" id="fullscreen-countdown"><strong>ReLoading countdown...</div>
         </div>
 
         <div class="button-container">
