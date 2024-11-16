@@ -6,6 +6,7 @@ const availableSBTs = [
     { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
     { id: 5, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/CEVNi_1728755819803_event_image.jpeg' },
     { id: 6, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
+    
 ];
 
 // Массив предстоящих SBT
