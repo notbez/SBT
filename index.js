@@ -1,21 +1,20 @@
-const axios = require('axios');
-const express = require('express');
-const bodyParser = require('body-parser');
+import TelegramBot from 'node-telegram-bot-api';
+import { post } from 'axios';
 
-// Токен бота
-const BOT_TOKEN = '7982544171:AAHwRRUebX2gy7Y43n6hI2CIsgAk4TMgq5w'; 
+// Токен бота, который ты получил от BotFather
+const BOT_TOKEN = '7982544171:AAHwRRUebX2gy7Y43n6hI2CIsgAk4TMgq5w';
 
-// Ссылка на Web App
+// Создаем экземпляр бота с помощью токена
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+
+// Ссылка на твое веб-приложение
 const WEB_APP_URL = 'https://notbez.github.io/SBT/';
-
-const app = express();
-app.use(bodyParser.json());
 
 // Функция для отправки сообщения с кнопкой Web App
 function sendWebAppButton(chatId) {
-    axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         chat_id: chatId,
-        text: 'Добро пожаловать! Откройте SBT Manager с помощью кнопки ниже.',
+        text: 'Открыть SBT Manager',
         reply_markup: {
             inline_keyboard: [[{
                 text: 'Открыть SBT Manager',
@@ -31,33 +30,13 @@ function sendWebAppButton(chatId) {
     });
 }
 
-// Маршрут для обработки webhook Telegram
-app.post(`/bot${BOT_TOKEN}`, (req, res) => {
-    const { message } = req.body;
+// Обработчик команды /start
+bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
 
-    if (message && message.text === '/start') {
-        const chatId = message.chat.id;
-        sendWebAppButton(chatId);
-    }
+    // Отправляем сообщение с кнопкой Web App
+    sendWebAppButton(chatId);
 
-    res.sendStatus(200);
-});
-
-// Устанавливаем Webhook
-function setWebhook() {
-    const url = `https://<https://notbez.github.io/SBT/>/bot${BOT_TOKEN}`;
-    axios.post(`https://api.telegram.org/bot${BOT_TOKEN}/setWebhook`, { url })
-        .then(response => {
-            console.log('Webhook установлен:', response.data);
-        })
-        .catch(error => {
-            console.error('Ошибка установки webhook:', error);
-        });
-}
-
-// Запускаем сервер
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
-    setWebhook();
+    // Приветственное сообщение
+    bot.sendMessage(chatId, 'Привет! Я твой бот. Нажми на кнопку ниже, чтобы открыть SBT Manager.');
 });
