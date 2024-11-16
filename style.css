@@ -208,7 +208,7 @@ nav {
 
 nav button {
     width: 30%;
-    font-size: 16px;
+    font-size: 120%;
     padding: 5px 10px;
     margin: 0 1px;
     border: none;
@@ -280,8 +280,8 @@ nav button:hover {
 
 .complete-btn{
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    width: 8em;
+    font-size: 100%;
+    width: 40%;
     padding: 8px 12px;
     margin: 150px 7px 0px 0px;
     border: none;
@@ -294,8 +294,8 @@ nav button:hover {
 
 .close-btn {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    width: 8em;
+    font-size: 100%;
+    width: 40%;
     padding: 8px 12px;
     margin: 150px 0px 0px 7px;
     border: none;
@@ -430,14 +430,14 @@ nav button:hover {
 }
 
 .text {
-    max-width: 200px; /* Максимальная ширина текста */
+    max-width: 100%; /* Максимальная ширина текста */
     text-align: center; /* Центрирование текста внутри блока */
     margin-left: auto; /* Отодвигает текст вправо */
     margin-right: auto; /* Отодвигает текст влево */
 }
 
 .logo img {
-    max-width: 30px; /* Размер логотипа */
+    max-width: 50px; /* Размер логотипа */
     height: auto;
 }
 

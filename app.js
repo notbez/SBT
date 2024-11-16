@@ -11,7 +11,6 @@ const availableSBTs = [
 // Массив предстоящих SBT
 const upcomingSBTs = [
     { id: 7, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 8, title: 'Upcoming SBT #2', link: 'https://example.com/upcoming2', code: 'UpcomingCode2', releaseDate: '2024-11-11 02:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
 ];
 
 // Массив пропущенных SBT
