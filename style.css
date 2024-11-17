@@ -161,6 +161,8 @@ select {
 
 
 
+
+
 /* Общие стили */
 body {
     font-family: 'Open Sans', sans-serif;
@@ -315,17 +317,6 @@ h1 {
     text-align: center;
 }
 
-.sbt-fullscreen-content h2 {
-    color: #d9d9d9;
-    margin-top: 10px;
-    font-size: 24px;
-}
-
-.sbt-fullscreen-content p {
-    color: #aaa;
-    font-size: 16px;
-    margin: 10px 0;
-}
 
 .sbt-fullscreen-content .button-container {
     display: flex;
@@ -357,14 +348,6 @@ h1 {
     border-radius: 20px 20px 0px 0px; /* Закругленные углы */
     margin-top: 0px;
     margin: 0px;
-}
-
-/* Увеличенный размер шрифта для заголовка */
-.sbt-fullscreen-content h2 {
-    font-size: 18px; /* Увеличенный шрифт */
-    color: #d9d9d9;
-    margin-top: 10px;
-    text-align: center; /* Центрирование текста */
 }
 
 /* Линия под заголовком */
@@ -504,9 +487,38 @@ a {
     .grab-btn{
         font-size: 100%;
         font-weight: 500;
+    }  
+
+    .complete-btn,
+    .close-btn {
+    font-size: 14px;
+    padding: 7px 0px;
+    border: none;
+    background-color: #333;
+    color: whitesmoke;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px;
+
     }
 
+
+    /* Увеличенный размер шрифта для заголовка */
+    .sbt-fullscreen-content h2 {
+        font-size: 17px; /* Увеличенный шрифт */
+        color: #d9d9d9;
+        margin-top: 10px;
+        text-align: center; /* Центрирование текста */
+    }
+
+    .sbt-fullscreen-content p {
+        color: #aaa;
+        font-size: 16px;
+        margin: 10px 0;
+    }
 }
+    
 
 @media (min-width: 450px){
     nav {
@@ -566,6 +578,33 @@ a {
         font-size: 140%;
         font-weight: 500;
     }
+
+    .sbt-fullscreen-content .complete-btn,
+    .sbt-fullscreen-content .close-btn {
+    font-size: 23px;
+    padding: 7px 0px;
+    border: none;
+    background-color: #333;
+    color: whitesmoke;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px;
+}
+
+/* Увеличенный размер шрифта для заголовка */
+.sbt-fullscreen-content h2 {
+    font-size: 29px; /* Увеличенный шрифт */
+    color: #d9d9d9;
+    margin-top: 10px;
+    text-align: center; /* Центрирование текста */
+}
+
+.sbt-fullscreen-content p {
+    color: #aaa;
+    font-size: 22px;
+    margin: 10px 0;
+}
 
 }
 
@@ -627,6 +666,33 @@ a {
         font-size: 25px;
         font-weight: 500;
     }
+
+    .sbt-fullscreen-content .complete-btn,
+    .sbt-fullscreen-content .close-btn {
+    font-size: 32px;
+    padding: 7px 0px;
+    border: none;
+    background-color: #333;
+    color: whitesmoke;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 20px;
+}
+
+/* Увеличенный размер шрифта для заголовка */
+.sbt-fullscreen-content h2 {
+    font-size: 35px; /* Увеличенный шрифт */
+    color: #d9d9d9;
+    margin-top: 10px;
+    text-align: center; /* Центрирование текста */
+}
+
+.sbt-fullscreen-content p {
+    color: #aaa;
+    font-size: 28px;
+    margin: 20px 0;
+}
 
 }
 

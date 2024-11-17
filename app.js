@@ -175,10 +175,10 @@ function showSBTFullScreen(sbt) {
         <div class="sbt-info">
             <h2>Guide to obtaining SBT</h2>
             <p style="margin: 10px;">
-                <strong><a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a></strong>
+                <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
-            <p style="margin: 10px;"><strong>Password:</strong> ${sbt.code}</p>
-            <p style="margin: 10px;"><strong>Deadline:</strong> ${sbt.deadline}</p>
+            <p style="margin: 10px;">Password: ${sbt.code}</p>
+            <p style="margin: 10px;">Deadline: ${sbt.deadline}</p>
         </div>
 
         <div class="button-container">
