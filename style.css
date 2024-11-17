@@ -193,35 +193,8 @@ h1 {
     box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
 }
 
-nav {
-    text-align: center;
-    margin: 0px;
-    padding: 0px 0;
-    background-color: #303030;
-    margin-bottom: 0px;
-}
 
-nav button {
-    font-size: 120%;
-    padding: 5px 10px;
-    margin: 0 1px;
-    border: none;
-    background-color: #303030;
-    color: rgb(156, 156, 156);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
-nav button.active {
-    background-color: #272727;
-    color: whitesmoke;
-}
-
-nav button:hover {
-    background-color: #272727;
-    color: whitesmoke;
-}
 
 /* Стили для контейнеров с SBT */
 
@@ -473,5 +446,188 @@ a {
     margin: 7px;
 }
 
+
+@media (min-width: 300px){
+    nav {
+        text-align: center;
+        margin: 0px;
+        padding: 0px 0;
+        background-color: #303030;
+        margin-bottom: 0px;
+    }
+    
+    nav button {
+        font-size: 120%;
+        padding: 5px 10px;
+        margin: 0 1px;
+        border: none;
+        background-color: #303030;
+        color: rgb(156, 156, 156);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    nav button.active {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+    
+    nav button:hover {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+
+    .logo img {
+        max-width: 44px; /* Размер логотипа */
+        height: auto;
+    }
+
+    .logo {
+        margin-right: 0px; /* Отступ между логотипом и текстом */
+        margin: 0 0 0 10px;
+    }
+
+    h1{
+        font-size: 10px;
+    }
+
+    .header-line {
+        width: 100%; /* Занимает всю доступную ширину */
+        margin: 5px 0 0 0px; /* Убираем отступ слева */
+        border: none; /* Убираем стандартные границы */
+        height: 1.5px; /* Толщина линии */
+        background-color: #171717; /* Цвет линии */
+        box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
+    }
+
+    .grab-btn{
+        font-size: 100%;
+        font-weight: 500;
+    }
+
+}
+
+@media (min-width: 450px){
+    nav {
+        text-align: center;
+        margin: 0px;
+        padding: 0px 0;
+        background-color: #303030;
+        margin-bottom: 0px;
+    }
+    
+    nav button {
+        font-size: 160%;
+        padding: 5px 10px;
+        margin: 0 1px;
+        border: none;
+        background-color: #303030;
+        color: rgb(156, 156, 156);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    nav button.active {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+    
+    nav button:hover {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+
+    .logo img {
+        max-width: 54px; /* Размер логотипа */
+        height: auto;
+    }
+
+    .logo {
+        margin-right: 0px; /* Отступ между логотипом и текстом */
+        margin: 10px 0px 10px 10px;
+    }
+
+    h1{
+        font-size: 14px;
+    }
+
+    .header-line {
+        width: 100%; /* Занимает всю доступную ширину */
+        margin: 5px 0 0 0px; /* Убираем отступ слева */
+        border: none; /* Убираем стандартные границы */
+        height: 1.5px; /* Толщина линии */
+        background-color: #171717; /* Цвет линии */
+        box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
+    }
+
+    .grab-btn{
+        font-size: 140%;
+        font-weight: 500;
+    }
+
+}
+
+@media (min-width: 600px){
+    nav {
+        text-align: center;
+        margin: 0px;
+        padding: 0px 0;
+        background-color: #303030;
+        margin-bottom: 0px;
+    }
+    
+    nav button {
+        font-size: 180%;
+        padding: 5px 10px;
+        margin: 0 30px;
+        border: none;
+        background-color: #303030;
+        color: rgb(156, 156, 156);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    nav button.active {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+    
+    nav button:hover {
+        background-color: #272727;
+        color: whitesmoke;
+    }
+
+    .logo img {
+        max-width: 64px; /* Размер логотипа */
+        height: auto;
+    }
+
+    .logo {
+        margin-right: 0px; /* Отступ между логотипом и текстом */
+        margin: 10px 0px 10px 20px;
+    }
+
+    h1{
+        font-size: 17px;
+    }
+
+    .header-line {
+        width: 100%; /* Занимает всю доступную ширину */
+        margin: 5px 0 0 0px; /* Убираем отступ слева */
+        border: none; /* Убираем стандартные границы */
+        height: 2.5px; /* Толщина линии */
+        background-color: #171717; /* Цвет линии */
+        box-shadow: 0 2px 5px rgba(38, 38, 38, 0.5);
+    }
+
+    .grab-btn{
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+}
 
 
