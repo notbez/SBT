@@ -33,11 +33,23 @@ function loadSBTData() {
     const savedMissedSBTs = localStorage.getItem('missedSBTs');
 
     if (savedAvailableSBTs) {
-        availableSBTs.splice(0, availableSBTs.length, ...JSON.parse(savedAvailableSBTs));
+        const parsedAvailableSBTs = JSON.parse(savedAvailableSBTs);
+        if (Array.isArray(parsedAvailableSBTs)) {
+            availableSBTs.splice(0, availableSBTs.length, ...parsedAvailableSBTs);
+        }
     }
+
     if (savedMissedSBTs) {
-        missedSBTs.splice(0, missedSBTs.length, ...JSON.parse(savedMissedSBTs));
+        const parsedMissedSBTs = JSON.parse(savedMissedSBTs);
+        if (Array.isArray(parsedMissedSBTs)) {
+            missedSBTs.splice(0, missedSBTs.length, ...parsedMissedSBTs);
+        }
     }
+
+    console.log('availableSBTs after deadline check:', availableSBTs);
+    console.log('missedSBTs after deadline check:', missedSBTs);
+
+
 }
 
 // Проверка дедлайнов
@@ -50,6 +62,10 @@ function checkDeadlines() {
             availableSBTs.splice(index, 1);
         }
     });
+    console.log('availableSBTs after deadline check:', availableSBTs);
+    console.log('missedSBTs after deadline check:', missedSBTs);
+
+    saveSBTData();
 }
 
 function checkUpcomingReleases() {
@@ -276,6 +292,10 @@ function onCompleteButtonClick(sbtId) {
         showSection('main'); // Переход на вкладку `main` (где находятся доступные SBT)
 
         console.log("SBT перенесён в missed");
+        console.log('availableSBTs after deadline check:', availableSBTs);
+        console.log('missedSBTs after deadline check:', missedSBTs);
+
+
     }
 }
 
@@ -321,8 +341,11 @@ function init() {
     checkUpcomingReleases();
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
-
     showSection('main');
+
+    console.log('availableSBTs after deadline check:', availableSBTs);
+    console.log('missedSBTs after deadline check:', missedSBTs);
+
 
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.ready();
