@@ -110,13 +110,15 @@ function renderSBTs(listId, sbtArray) {
         const sbtItem = document.createElement('div');
         sbtItem.classList.add('sbt-item');
 
-        sbtItem.innerHTML = `
-            <img src="${sbt.image}" alt="SBT Image">
-            <button class="grab-btn">${listId === 'missed-sbt-list' ? "Expired" : 'Take SBT'}</button>
-        `;
+        const isMissedTab = listId === 'missed-sbt-list';
+        const isUpcomingTab = listId === 'upcoming-sbt-list';
 
-        // Если SBT в списке "available", добавляем событие для кнопки
-        if (listId !== 'missed-sbt-list') {
+        sbtItem.innerHTML = `
+    <img src="${sbt.image}" alt="SBT Image" class="${isMissedTab || isUpcomingTab ? 'blur' : ''}">
+    <button class="grab-btn">${isMissedTab ? "Expired" : 'Take SBT'}</button>
+`;
+        // Если SBT не пропущенный, добавляем обработчики
+        if (!isMissedTab) {
             sbtItem.querySelector('.grab-btn').addEventListener('click', () => {
                 showSBTFullScreen(sbt);
             });
@@ -135,7 +137,8 @@ function renderUpcomingSBTs() {
         sbtItem.classList.add('sbt-item');
 
         sbtItem.innerHTML = `
-            <img src="${sbt.image}" alt="SBT Image">
+            <img src="${sbt.image}" alt="SBT Image" class="blur">
+            
             <button class="grab-btn">Watch</button>
         `;
 
@@ -204,7 +207,7 @@ function showUpcomingSBTFullScreen(sbt) {
 
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
-        <img src="${sbt.image}" alt="SBT Image Fullscreen">
+        <img src="${sbt.image}" alt="SBT Image Fullscreen" class="blur">
         
         <div class="sbt-info">
             <h2>Upcoming SBT</h2>

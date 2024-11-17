@@ -168,14 +168,14 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px;
     padding: 0px;
-    background-color: #303030;
+    background-color: #232323;
     color: whitesmoke;
 }
 
 header {
     text-align: center;
     padding: 5px 0px ;
-    background-color: #303030;
+    background-color: #232323;
     box-shadow: 0px 0px 20px
 }
 
@@ -188,7 +188,7 @@ h1 {
 /* Линия под заголовком */
 .header-line {
     width: 100%; /* Занимает всю доступную ширину */
-    margin: 5px 0 0 0px; /* Убираем отступ слева */
+    margin: 5px 0px 20px 0px; /* Убираем отступ слева */
     border: none; /* Убираем стандартные границы */
     height: 1.5px; /* Толщина линии */
     background-color: #171717; /* Цвет линии */
@@ -207,18 +207,18 @@ h1 {
     flex-wrap: wrap;
     justify-content: center; /* Центровка элементов */
     gap: 20px; /* Промежуток между картами */
-    padding: 20px;;
+    padding: 20px;
     }
 
 .sbt-item {
     width: 46.432%;
     padding: 0px;
-    background-color: #333;
-    border-radius: 30px;
+    background-color: #232323;
+    border-radius: 20%;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .sbt-item:hover {
@@ -226,6 +226,7 @@ h1 {
 }
 
 .sbt-item img {
+    z-index: 1;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -234,6 +235,7 @@ h1 {
 }
 
 .grab-btn{
+    z-index: 12;
     font-family: 'Open Sans', sans-serif;
     font-size: 100%;
     font-weight: 500;
@@ -241,7 +243,7 @@ h1 {
     margin: 0%;
     padding: 5% 11%;
     border: none;
-    background-color: #3B3B3B;
+    background-color: #373737;
     color: whitesmoke;
     border-radius: 0% 0% 20em 20em;
     cursor: pointer;
@@ -309,7 +311,7 @@ h1 {
 
 .sbt-fullscreen-content {
     max-width: 90%;
-    background: #272727;
+    background: #232323;
     padding: 0px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
@@ -435,7 +437,7 @@ a {
         text-align: center;
         margin: 0px;
         padding: 0px 0;
-        background-color: #303030;
+        background-color: #232323;
         margin-bottom: 0px;
     }
     
@@ -444,21 +446,24 @@ a {
         padding: 5px 10px;
         margin: 0 1px;
         border: none;
-        background-color: #303030;
+        background-color: #232323;
         color: rgb(156, 156, 156);
         border-radius: 50px;
         cursor: pointer;
         transition: background-color 0.3s;
+        
     }
     
     nav button.active {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
     
     nav button:hover {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
 
     .logo img {
@@ -494,7 +499,7 @@ a {
     font-size: 14px;
     padding: 7px 0px;
     border: none;
-    background-color: #333;
+    background-color: #373737;
     color: whitesmoke;
     border-radius: 30px;
     cursor: pointer;
@@ -525,7 +530,7 @@ a {
         text-align: center;
         margin: 0px;
         padding: 0px 0;
-        background-color: #303030;
+        background-color: #232323;
         margin-bottom: 0px;
     }
     
@@ -534,7 +539,7 @@ a {
         padding: 5px 10px;
         margin: 0 1px;
         border: none;
-        background-color: #303030;
+        background-color: #232323;
         color: rgb(156, 156, 156);
         border-radius: 50px;
         cursor: pointer;
@@ -542,13 +547,15 @@ a {
     }
     
     nav button.active {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
     
     nav button:hover {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
 
     .logo img {
@@ -584,7 +591,7 @@ a {
     font-size: 23px;
     padding: 7px 0px;
     border: none;
-    background-color: #333;
+    background-color: #373737;
     color: whitesmoke;
     border-radius: 30px;
     cursor: pointer;
@@ -613,7 +620,7 @@ a {
         text-align: center;
         margin: 0px;
         padding: 0px 0;
-        background-color: #303030;
+        background-color: #232323;
         margin-bottom: 0px;
     }
     
@@ -622,7 +629,7 @@ a {
         padding: 5px 10px;
         margin: 0 30px;
         border: none;
-        background-color: #303030;
+        background-color: #232323;
         color: rgb(156, 156, 156);
         border-radius: 50px;
         cursor: pointer;
@@ -630,13 +637,15 @@ a {
     }
     
     nav button.active {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
     
     nav button:hover {
-        background-color: #272727;
+        background-color: #373737;
         color: whitesmoke;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
 
     .logo img {
@@ -672,7 +681,7 @@ a {
     font-size: 32px;
     padding: 7px 0px;
     border: none;
-    background-color: #333;
+    background-color: #373737;
     color: whitesmoke;
     border-radius: 30px;
     cursor: pointer;
@@ -691,9 +700,23 @@ a {
 .sbt-fullscreen-content p {
     color: #aaa;
     font-size: 28px;
-    margin: 20px 0;
+    margin: 200px 0;
 }
 
 }
 
 
+.sbt-item img.blur {
+    filter: blur(5px);
+}
+
+.sbt-item img.blur,
+.sbt-fullscreen-content img.blur {
+    filter: blur(4px); /* Размытие */
+    transition: none; /* Убираем все эффекты при наведении */
+}
+
+.sbt-item {
+    position: relative;
+    overflow: hidden; /* Обрезка содержимого за пределами контейнера */
+}
