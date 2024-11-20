@@ -1,12 +1,20 @@
+localStorage.removeItem('availableSBTs');
+localStorage.removeItem('missedSBTs');
+
 // Массив доступных SBT
 const availableSBTs = [
+    { id: 91, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррр', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
+    { id: 92, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinspb', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
+    { id: 93, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
+    { id: 94, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 95, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/CEVNi_1728755819803_event_image.jpeg' },
+    { id: 96, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
+    
 ];
 
 // Массив предстоящих SBT
 const upcomingSBTs = [
     { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
     { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
 ];
 
@@ -20,40 +28,25 @@ function saveSBTData() {
     localStorage.setItem('missedSBTs', JSON.stringify(missedSBTs));
 }
 
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
-
 // Загрузка данных из Local Storage при запуске
 function loadSBTData() {
     const savedAvailableSBTs = localStorage.getItem('availableSBTs');
     const savedMissedSBTs = localStorage.getItem('missedSBTs');
-    console.log('Raw missedSBTs from Local Storage:', savedMissedSBTs); // Сырые данные
 
     if (savedAvailableSBTs) {
         const parsedAvailableSBTs = JSON.parse(savedAvailableSBTs);
         if (Array.isArray(parsedAvailableSBTs)) {
-            availableSBTs.splice(0, availableSBTs.length, ...parsedAvailableSBTs);
+            availableSBTs = parsedAvailableSBTs;
         }
     }
 
     if (savedMissedSBTs) {
         const parsedMissedSBTs = JSON.parse(savedMissedSBTs);
         if (Array.isArray(parsedMissedSBTs)) {
-            missedSBTs.splice(0, missedSBTs.length, ...parsedMissedSBTs);
+            missedSBTs = parsedMissedSBTs;
         }
     }
-    console.log('Loaded missedSBTs:', missedSBTs);
-
-    console.log('availableSBTs after deadline check:', availableSBTs);
-    console.log('missedSBTs after deadline check:', missedSBTs);
-
-
 }
-
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 // Проверка дедлайнов
 function checkDeadlines() {
@@ -140,7 +133,6 @@ renderUpcomingSBTs();
 
 // Рендеринг SBT в списках
 function renderSBTs(listId, sbtArray) {
-    console.log(`Rendering SBTs for ${listId}:`, sbtArray); // Лог для проверки данных
     const listElement = document.getElementById(listId);
     listElement.innerHTML = '';
 
@@ -148,15 +140,12 @@ function renderSBTs(listId, sbtArray) {
         const sbtItem = document.createElement('div');
         sbtItem.classList.add('sbt-item');
 
-        const isMissedTab = listId === 'missed-sbt-list';
-        const isUpcomingTab = listId === 'upcoming-sbt-list';
-
         sbtItem.innerHTML = `
-    <img src="${sbt.image}" alt="SBT Image" class="${isMissedTab || isUpcomingTab ? 'blur' : ''}">
-    <button class="grab-btn">${isMissedTab ? "Expired" : 'Take SBT'}</button>
-`;
-        // Если SBT не пропущенный, добавляем обработчики
-        if (!isMissedTab) {
+            <img src="${sbt.image}" alt="SBT Image">
+            <button class="grab-btn">${listId === 'missed-sbt-list' ? 'Expired' : 'Take SBT'}</button>
+        `;
+
+        if (listId !== 'missed-sbt-list') {
             sbtItem.querySelector('.grab-btn').addEventListener('click', () => {
                 showSBTFullScreen(sbt);
             });
