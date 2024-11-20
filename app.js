@@ -27,6 +27,10 @@ function saveSBTData() {
     localStorage.setItem('missedSBTs', JSON.stringify(missedSBTs));
 }
 
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
+
 // Загрузка данных из Local Storage при запуске
 function loadSBTData() {
     const savedAvailableSBTs = localStorage.getItem('availableSBTs');
@@ -53,6 +57,10 @@ function loadSBTData() {
 
 
 }
+
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
 
 // Проверка дедлайнов
 function checkDeadlines() {
@@ -91,6 +99,11 @@ function checkUpcomingReleases() {
 }
 
 function startCountdown(releaseDate, countdownElement, sbtId) {
+    if (!countdownElement) {
+        console.error('countdownElement is not found for SBT ID:', sbtId);
+        return;
+    }
+
     function updateCountdown() {
         const now = new Date();
         const distance = new Date(releaseDate) - now;
@@ -106,13 +119,11 @@ function startCountdown(releaseDate, countdownElement, sbtId) {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownElement.innerText = `Remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
     }
 
-    // Запускаем интервал обновления каждую секунду
     const interval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Обновляем первый раз сразу
 }
 
 function moveToAvailable(sbtId) {
@@ -129,6 +140,10 @@ function moveToAvailable(sbtId) {
         renderUpcomingSBTs(); // Обновляем список upcoming для удаления истекшего SBT
     }
 }
+
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
 
 // Рендеринг SBT в списках
 function renderSBTs(listId, sbtArray) {
@@ -158,6 +173,10 @@ function renderSBTs(listId, sbtArray) {
     });
 }
 
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
+
 function renderUpcomingSBTs() {
     const listElement = document.getElementById('upcoming-sbt-list');
     listElement.innerHTML = '';
@@ -168,7 +187,7 @@ function renderUpcomingSBTs() {
 
         sbtItem.innerHTML = `
             <img src="${sbt.image}" alt="SBT Image" class="blur">
-            
+            <div class="countdown"></div> <!-- Элемент для обратного отсчёта -->
             <button class="grab-btn">Watch</button>
         `;
 
@@ -183,6 +202,10 @@ function renderUpcomingSBTs() {
     });
 }
 
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
+
 // Обработчик нажатия на аппаратную кнопку "Назад"
 window.addEventListener("popstate", () => {
     const sbtContainer = document.getElementById('sbt-fullscreen-container');
@@ -192,6 +215,10 @@ window.addEventListener("popstate", () => {
         showSection('main'); // Вернуться к разделу "Available", если полноэкранный режим уже закрыт
     }
 });
+
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
 
 // Полный экран для SBT
 function showSBTFullScreen(sbt) {
@@ -267,6 +294,10 @@ function hideSBTFullScreen() {
     history.back();
 }
 
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
+
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => {
         section.style.display = section.id === sectionId ? 'block' : 'none';
@@ -309,7 +340,9 @@ function onCompleteButtonClick(sbtId) {
     }
 }
 
-// Ваши массивы данных и функции, например, availableSBTs, missedSBTs и т.д.
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
 
 // Добавляем обработку свайпа
 let touchStartX = 0;
@@ -326,6 +359,10 @@ function handleTouchEnd(event) {
         backToMain();
     }
 }
+
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
 
 document.body.addEventListener('touchstart', handleTouchStart);
 document.body.addEventListener('touchend', handleTouchEnd);
@@ -344,28 +381,47 @@ function backToMain() {
     showSection('main');
 }
 
+renderSBTs('available-sbt-list', availableSBTs);
+renderSBTs('missed-sbt-list', missedSBTs);
+renderUpcomingSBTs();
+
 // Далее идут ваши функции init() и другие
 function init() {
     console.log('Initializing application...');
+    
+    // Сбрасываем устаревшие данные (опционально, если хотите начать с нуля)
+    // localStorage.removeItem('availableSBTs');
+    // localStorage.removeItem('missedSBTs');
+    
+    // Загружаем данные
     loadSBTData();
     console.log('Initial missedSBTs:', missedSBTs);
     console.log('Initial availableSBTs:', availableSBTs);
+
+    // Проверяем дедлайны и обновляем статус
     checkDeadlines();
     checkUpcomingReleases();
+
+    // Рендерим вкладки
     renderSBTs('available-sbt-list', availableSBTs);
     renderSBTs('missed-sbt-list', missedSBTs);
-    showSection('main');
+    renderUpcomingSBTs();
 
-    console.log('availableSBTs after deadline check:', availableSBTs);
-    console.log('missedSBTs after deadline check:', missedSBTs);
-
-
+    // Убедитесь, что Telegram WebApp готов
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.ready();
+    
+        // Получаем параметры, переданные через Telegram WebApp
+        const initData = Telegram.WebApp.initData;
+        console.log('Telegram WebApp Init Data:', initData);
     }
 
+    // Настраиваем переключение вкладок
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
     document.getElementById('upcoming-tab').addEventListener('click', () => showSection('upcoming'));
+
+    // Показ основной секции по умолчанию
+    showSection('main');
 }
 document.addEventListener('DOMContentLoaded', init);
