@@ -1,102 +1,131 @@
+const SBT_VERSION = "1.6"; // Увеличьте версию при добавлении SBT
 
+// Данные пользователя
+let userData = {
+    missedSBTs: [],
+    completedSBTIds: [], // Массив ID уже забранных SBT
+};
 
 // Массив доступных SBT
-const availableSBTs = [
-    { id: 91, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррр', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
-    { id: 92, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinspb', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
-    { id: 93, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
-    { id: 94, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 95, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/CEVNi_1728755819803_event_image.jpeg' },
-    { id: 96, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
-
-    { id: 96, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
-
-    { id: 96, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
-
-    { id: 96, title: 'SBT #6', link: 'https://t.me/theontonbot/event?startapp=760361c8-ad58-4fc5-9061-d0e9b5899316', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/ON48n_1729233832966_event_image.jpeg' },
-    
+let availableSBTs = [
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррраваываыв', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
+    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinsb111', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
+    { id: 3, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
+    { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 5, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=a355b59c-ed6b-41e6-a849-7aa8c72c6481', code: 'Tonytheduck', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/J0l4v_1732007908803_event_image.png' },
+    { id: 5, title: 'SBT #5', link: 'http://t.me/theontonbot/event?startapp=ebc52557-74ad-42ab-a13a-2915844d3fe5', code: 'MondayStarts', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/EQwaY_1731936380974_event_image.png' },
 ];
 
 // Массив предстоящих SBT
-const upcomingSBTs = [
-    { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+let upcomingSBTs = [
     { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 102, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
 ];
 
 // Массив пропущенных SBT
-const missedSBTs = [];
-const mySBTs = [];
+let missedSBTs = [];
+let mySBTs = [];
 
 // Сохранение данных в Local Storage
-function saveSBTData() {
-    localStorage.setItem('availableSBTs', JSON.stringify(availableSBTs));
-    localStorage.setItem('missedSBTs', JSON.stringify(missedSBTs));
+const saveSBTData = () => {
+    console.log('Функция loadSBTData вызвана'); // Отладочный вывод
+    const data = {
+        version: SBT_VERSION,
+        availableSBTs,
+        missedSBTs,
+        upcomingSBTs
+    };
+    localStorage.setItem('sbtData', JSON.stringify(data));
 }
 
-// Загрузка данных из Local Storage при запуске
-function loadSBTData() {
-    const savedAvailableSBTs = localStorage.getItem('availableSBTs');
-    const savedMissedSBTs = localStorage.getItem('missedSBTs');
 
-    if (savedAvailableSBTs) {
-        const parsedAvailableSBTs = JSON.parse(savedAvailableSBTs);
-        if (Array.isArray(parsedAvailableSBTs)) {
-            availableSBTs = parsedAvailableSBTs;
+const loadSBTData = () => {
+    const savedData = localStorage.getItem('sbtData');
+
+    if (savedData) {
+        const parsedSbtData = JSON.parse(savedData);
+    
+        if (parsedSbtData.version === SBT_VERSION) {
+            availableSBTs = parsedSbtData.availableSBTs.filter(sbt => 
+                !userData.completedSBTIds.includes(sbt.id) && 
+                !userData.missedSBTs.some(missedSBT => missedSBT.id === sbt.id)
+            );
+    
+            missedSBTs = parsedSbtData.missedSBTs || [];
+            upcomingSBTs = parsedSbtData.upcomingSBTs || [];
         }
     }
 
-    if (savedMissedSBTs) {
-        const parsedMissedSBTs = JSON.parse(savedMissedSBTs);
-        if (Array.isArray(parsedMissedSBTs)) {
-            missedSBTs = parsedMissedSBTs;
-        }
+    // Если версия не совпадает или данных нет, сохраняем обновленные массивы
+    saveSBTData();
+}
+
+const saveUserData = () => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+}
+
+const loadUserData = () => {
+    const savedUserData = localStorage.getItem('userData');
+    const savedSbtData = localStorage.getItem('sbtData');
+
+    if (savedUserData) {
+        userData = JSON.parse(savedUserData);
     }
+
+    if (savedSbtData) {
+        const parsedSbtData = JSON.parse(savedSbtData);
+
+        // Если версия совпадает, оставляем старые данные, иначе обновляем
+        if (parsedSbtData.version === SBT_VERSION) {
+            availableSBTs = parsedSbtData.availableSBTs;
+        } else {
+            // Новая версия — сохраняем обновленные данные
+            saveSBTData();
+        }
+    } else {
+        // Если данных нет, сохраняем текущие данные
+        saveSBTData();
+    }
+
+    // Убираем из доступных SBT те, которые пользователь уже забрал
+    availableSBTs = availableSBTs.filter(sbt => !userData.completedSBTIds.includes(sbt.id));
 }
 
 // Проверка дедлайнов
 function checkDeadlines() {
     const currentDate = new Date();
-    availableSBTs.forEach((sbt, index) => {
+    availableSBTs = availableSBTs.filter((sbt) => {
         const sbtDeadline = new Date(sbt.deadline);
         if (sbtDeadline < currentDate) {
             missedSBTs.push(sbt);
-            availableSBTs.splice(index, 1);
+            return false; // Убираем из `availableSBTs`
         }
+        return true;
     });
-    console.log('Updated availableSBTs:', availableSBTs); // После перемещения
-    console.log('Updated missedSBTs:', missedSBTs);
-
+    saveSBTData(); // Сохраняем изменения
     renderSBTs('available-sbt-list', availableSBTs);
-    renderSBTs('missed-sbt-list', missedSBTs)
-
-    console.log('availableSBTs after deadline check:', availableSBTs);
-    console.log('missedSBTs after deadline check:', missedSBTs);
-    saveSBTData();
+    renderSBTs('missed-sbt-list', missedSBTs);
 }
-
-
-console.log('availableSBTs after deadline check:', availableSBTs);
-console.log('missedSBTs after deadline check:', missedSBTs);
 
 function checkUpcomingReleases() {
     const currentDate = new Date();
-    upcomingSBTs.forEach((sbt, index) => {
+    upcomingSBTs = upcomingSBTs.filter((sbt) => {
         const releaseDate = new Date(sbt.releaseDate);
         if (releaseDate <= currentDate) {
             availableSBTs.push(sbt);
-            upcomingSBTs.splice(index, 1);
+            return false; // Убираем из upcoming
         }
+        return true;
     });
+
+    saveSBTData(); // Сохраняем изменения
+    renderSBTs('available-sbt-list', availableSBTs);
+    renderUpcomingSBTs(); // Обновляем список upcoming
 }
 
-function startCountdown(releaseDate, countdownElement, sbtId) {
-    if (!countdownElement) {
-        console.error('countdownElement is not found for SBT ID:', sbtId);
-        return;
-    }
 
+// Таймер обратного отсчета
+function startCountdown(releaseDate, countdownElement, sbtId) {
     function updateCountdown() {
         const now = new Date();
         const distance = new Date(releaseDate) - now;
@@ -105,7 +134,7 @@ function startCountdown(releaseDate, countdownElement, sbtId) {
             countdownElement.innerText = "Available now!";
             clearInterval(interval);
 
-            // Перемещаем SBT в "Available" после истечения времени
+            // Перемещаем SBT в "Available"
             moveToAvailable(sbtId);
         } else {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -116,7 +145,7 @@ function startCountdown(releaseDate, countdownElement, sbtId) {
     }
 
     const interval = setInterval(updateCountdown, 1000);
-    updateCountdown(); // Обновляем первый раз сразу
+    updateCountdown(); // Первое обновление сразу
 }
 
 function moveToAvailable(sbtId) {
@@ -134,14 +163,10 @@ function moveToAvailable(sbtId) {
     }
 }
 
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
-
 // Рендеринг SBT в списках
 function renderSBTs(listId, sbtArray) {
     const listElement = document.getElementById(listId);
-    listElement.innerHTML = '';
+    listElement.innerHTML = ''; // Очистка текущего списка
 
     sbtArray.forEach(sbt => {
         const sbtItem = document.createElement('div');
@@ -152,6 +177,7 @@ function renderSBTs(listId, sbtArray) {
             <button class="grab-btn">${listId === 'missed-sbt-list' ? 'Expired' : 'Take SBT'}</button>
         `;
 
+        // Если это не список пропущенных SBT
         if (listId !== 'missed-sbt-list') {
             sbtItem.querySelector('.grab-btn').addEventListener('click', () => {
                 showSBTFullScreen(sbt);
@@ -161,10 +187,6 @@ function renderSBTs(listId, sbtArray) {
         listElement.appendChild(sbtItem);
     });
 }
-
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 function renderUpcomingSBTs() {
     const listElement = document.getElementById('upcoming-sbt-list');
@@ -191,9 +213,6 @@ function renderUpcomingSBTs() {
     });
 }
 
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 // Обработчик нажатия на аппаратную кнопку "Назад"
 window.addEventListener("popstate", () => {
@@ -204,10 +223,6 @@ window.addEventListener("popstate", () => {
         showSection('main'); // Вернуться к разделу "Available", если полноэкранный режим уже закрыт
     }
 });
-
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 // Полный экран для SBT
 function showSBTFullScreen(sbt) {
@@ -283,10 +298,6 @@ function hideSBTFullScreen() {
     history.back();
 }
 
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
-
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => {
         section.style.display = section.id === sectionId ? 'block' : 'none';
@@ -296,10 +307,11 @@ function showSection(sectionId) {
         button.classList.toggle('active', button.id.includes(sectionId));
     });
 
+    // Рендеринг для каждой вкладки
     if (sectionId === 'main') {
         renderSBTs('available-sbt-list', availableSBTs);
     } else if (sectionId === 'missed') {
-        renderSBTs('missed-sbt-list', missedSBTs);
+        renderSBTs('missed-sbt-list', userData.missedSBTs); // Используйте missedSBTs из userData
     } else if (sectionId === 'upcoming') {
         renderUpcomingSBTs();
     }
@@ -309,29 +321,19 @@ function showSection(sectionId) {
 function onCompleteButtonClick(sbtId) {
     const sbtIndex = availableSBTs.findIndex(sbt => sbt.id === sbtId);
     if (sbtIndex !== -1) {
+        // Перемещаем SBT в массив missedSBTs
         const completedSBT = availableSBTs.splice(sbtIndex, 1)[0];
-        missedSBTs.push(completedSBT);
+        userData.missedSBTs.push(completedSBT);
+        userData.completedSBTIds.push(sbtId); // Добавляем ID в завершённые
 
-        // Перерисовываем список доступных и пропущенных SBT
+        // Перерисовываем списки
         renderSBTs('available-sbt-list', availableSBTs);
-        renderSBTs('missed-sbt-list', missedSBTs);
+        renderSBTs('missed-sbt-list', userData.missedSBTs);
 
-        saveSBTData(); // Сохраняем изменения в Local Storage
-
-        // Принудительно переключаемся и возвращаемся на вкладку available
-        showSection('main'); // Переход на вкладку `main` (где находятся доступные SBT)
-
-        console.log("SBT перенесён в missed");
-        console.log('availableSBTs after deadline check:', availableSBTs);
-        console.log('missedSBTs after deadline check:', missedSBTs);
-
-
+        saveUserData(); // Сохраняем изменения пользователя
+        showSection('main'); // Возвращаемся на главную
     }
 }
-
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 // Добавляем обработку свайпа
 let touchStartX = 0;
@@ -348,10 +350,6 @@ function handleTouchEnd(event) {
         backToMain();
     }
 }
-
-renderSBTs('available-sbt-list', availableSBTs);
-renderSBTs('missed-sbt-list', missedSBTs);
-renderUpcomingSBTs();
 
 document.body.addEventListener('touchstart', handleTouchStart);
 document.body.addEventListener('touchend', handleTouchEnd);
@@ -376,41 +374,22 @@ renderUpcomingSBTs();
 
 // Далее идут ваши функции init() и другие
 function init() {
-    console.log('Initializing application...');
-    
-    // Сбрасываем устаревшие данные (опционально, если хотите начать с нуля)
-    // localStorage.removeItem('availableSBTs');
-    // localStorage.removeItem('missedSBTs');
-    
-    // Загружаем данные
-    loadSBTData();
-    console.log('Initial missedSBTs:', missedSBTs);
-    console.log('Initial availableSBTs:', availableSBTs);
+    loadUserData(); // Восстанавливаем пользовательские данные
+    loadSBTData();  // Восстанавливаем данные о доступных SBT
 
-    // Проверяем дедлайны и обновляем статус
-    checkDeadlines();
-    checkUpcomingReleases();
+    checkDeadlines(); // Проверяем дедлайны SBT
+    checkUpcomingReleases(); // Проверяем предстоящие релизы
 
-    // Рендерим вкладки
     renderSBTs('available-sbt-list', availableSBTs);
-    renderSBTs('missed-sbt-list', missedSBTs);
+    renderSBTs('missed-sbt-list', userData.missedSBTs); // Убедитесь, что missedSBTs правильно рендерятся
     renderUpcomingSBTs();
 
-    // Убедитесь, что Telegram WebApp готов
-    if (window.Telegram && window.Telegram.WebApp) {
-        Telegram.WebApp.ready();
-    
-        // Получаем параметры, переданные через Telegram WebApp
-        const initData = Telegram.WebApp.initData;
-        console.log('Telegram WebApp Init Data:', initData);
-    }
-
-    // Настраиваем переключение вкладок
+    // Настройка вкладок
     document.getElementById('available-tab').addEventListener('click', () => showSection('main'));
     document.getElementById('missed-tab').addEventListener('click', () => showSection('missed'));
     document.getElementById('upcoming-tab').addEventListener('click', () => showSection('upcoming'));
 
-    // Показ основной секции по умолчанию
-    showSection('main');
+    showSection('main'); // Отображаем список доступных SBT
 }
+
 document.addEventListener('DOMContentLoaded', init);

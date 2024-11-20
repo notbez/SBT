@@ -12,7 +12,7 @@ bot.on('message', (msg) => {
     const chatId = msg.chat.id;
 
     if (msg.text === '/start') {
-        bot.sendMessage(chatId, 'Добро пожаловать! Нажмите кнопку ниже, чтобы открыть приложение.', {
+        bot.sendMessage(chatId, 'Добро пожаловать! xn.', {
             reply_markup: {
                 inline_keyboard: [[{
                     text: 'Открыть SBT Manager',
