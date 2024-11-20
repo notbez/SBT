@@ -22,6 +22,8 @@ const availableSBTs = [
 const upcomingSBTs = [
     { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
     { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 100, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
 ];
 
 // Массив пропущенных SBT
