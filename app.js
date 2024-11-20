@@ -1,5 +1,4 @@
-localStorage.removeItem('availableSBTs');
-localStorage.removeItem('missedSBTs');
+
 
 // Массив доступных SBT
 const availableSBTs = [
