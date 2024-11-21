@@ -1,4 +1,4 @@
-const SBT_VERSION = "1.7"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "1.8"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -11,6 +11,7 @@ let availableSBTs = [
     { id: 6, title: 'SBT #1', link: 'https://t.me/tonton_intract_bot?startapp=vt1ib8', code: 'None', deadline: 'None', image: 'https://sun9-10.userapi.com/s/v1/ig2/v7uSYoNLaG_SkNdkeQU5dsTDco5VWwXgotvMaQpzQiv3KW-8dli80s88rtW9QYpUHPjAc3gsmzRaaEcbd8yp2jK3.jpg?quality=95&crop=0,0,1220,1179&as=32x31,48x46,72x70,108x104,160x155,240x232,360x348,480x464,540x522,640x618,720x696,1080x1044,1220x1179&from=bu&u=nTQVxyFFKpw9MKF0p66mYPQQSGUlusD6Ts6Uk517Xnw&cs=1080x1044' },
     { id: 7, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f4d54156-686e-40e7-8216-769d19615256', code: 'Rode', deadline: '22.11.2024 - 02:46', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
     { id: 8, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=04f370f1-15fc-4637-9450-3109817a0161', code: 'tonhk', deadline: '21.11.2024 - 17:45', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
+    { id: 9, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '24.11.2024 - 17:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
     
 ];
 
