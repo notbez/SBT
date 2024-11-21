@@ -1,4 +1,4 @@
-const SBT_VERSION = "1.6"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "1.7"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -8,12 +8,10 @@ let userData = {
 
 // Массив доступных SBT
 let availableSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррраваываыв', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
-    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinsb111', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
-    { id: 3, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
-    { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 5, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=a355b59c-ed6b-41e6-a849-7aa8c72c6481', code: 'Tonytheduck', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/J0l4v_1732007908803_event_image.png' },
-    { id: 5, title: 'SBT #5', link: 'http://t.me/theontonbot/event?startapp=ebc52557-74ad-42ab-a13a-2915844d3fe5', code: 'MondayStarts', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/EQwaY_1731936380974_event_image.png' },
+    { id: 6, title: 'SBT #1', link: 'https://t.me/tonton_intract_bot?startapp=vt1ib8', code: 'None', deadline: 'None', image: 'https://sun9-10.userapi.com/s/v1/ig2/v7uSYoNLaG_SkNdkeQU5dsTDco5VWwXgotvMaQpzQiv3KW-8dli80s88rtW9QYpUHPjAc3gsmzRaaEcbd8yp2jK3.jpg?quality=95&crop=0,0,1220,1179&as=32x31,48x46,72x70,108x104,160x155,240x232,360x348,480x464,540x522,640x618,720x696,1080x1044,1220x1179&from=bu&u=nTQVxyFFKpw9MKF0p66mYPQQSGUlusD6Ts6Uk517Xnw&cs=1080x1044' },
+    { id: 7, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f4d54156-686e-40e7-8216-769d19615256', code: 'Rode', deadline: '22.11.2024 - 02:46', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
+    { id: 8, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=04f370f1-15fc-4637-9450-3109817a0161', code: 'tonhk', deadline: '21.11.2024 - 17:45', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
+    
 ];
 
 // Массив предстоящих SBT
@@ -23,7 +21,14 @@ let upcomingSBTs = [
 ];
 
 // Массив пропущенных SBT
-let missedSBTs = [];
+let missedSBTs = [
+    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррраваываыв', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
+    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinsb111', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
+    { id: 3, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
+    { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 5, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=a355b59c-ed6b-41e6-a849-7aa8c72c6481', code: 'Tonytheduck', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/J0l4v_1732007908803_event_image.png' },
+    { id: 5, title: 'SBT #5', link: 'http://t.me/theontonbot/event?startapp=ebc52557-74ad-42ab-a13a-2915844d3fe5', code: 'MondayStarts', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/EQwaY_1731936380974_event_image.png' },
+];
 let mySBTs = [];
 
 // Сохранение данных в Local Storage
@@ -123,7 +128,6 @@ function checkUpcomingReleases() {
     renderUpcomingSBTs(); // Обновляем список upcoming
 }
 
-
 // Таймер обратного отсчета
 function startCountdown(releaseDate, countdownElement, sbtId) {
     function updateCountdown() {
@@ -188,6 +192,8 @@ function renderSBTs(listId, sbtArray) {
     });
 }
 
+
+
 function renderUpcomingSBTs() {
     const listElement = document.getElementById('upcoming-sbt-list');
     listElement.innerHTML = '';
@@ -241,7 +247,7 @@ function showSBTFullScreen(sbt) {
             <p style="margin: 10px;">
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
-            <p style="margin: 10px;">Password: ${sbt.code}</p>
+            <p id="password-text" style="margin: 10px;">Password: ${sbt.code}</p>
             <p style="margin: 10px;">Deadline: ${sbt.deadline}</p>
         </div>
 
@@ -259,6 +265,14 @@ function showSBTFullScreen(sbt) {
     sbtContainer.querySelector('.complete-btn').addEventListener('click', () => {
         onCompleteButtonClick(sbt.id);
         hideSBTFullScreen();
+    });
+
+    const passwordElement = sbtContainer.querySelector('#password-text');
+    passwordElement.addEventListener('click', () => {
+        navigator.clipboard.writeText(sbt.code)
+            .catch(err => {
+                console.error('Failed to copy password: ', err);
+            });
     });
 }
 
@@ -297,6 +311,7 @@ function hideSBTFullScreen() {
     // Удаляем последнюю запись из истории, чтобы избежать дополнительного нажатия "Назад"
     history.back();
 }
+
 
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => {
@@ -371,6 +386,7 @@ function backToMain() {
 renderSBTs('available-sbt-list', availableSBTs);
 renderSBTs('missed-sbt-list', missedSBTs);
 renderUpcomingSBTs();
+
 
 // Далее идут ваши функции init() и другие
 function init() {
