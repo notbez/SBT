@@ -1,4 +1,4 @@
-const SBT_VERSION = "2.2"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "2.8"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -6,19 +6,28 @@ let userData = {
     completedSBTIds: [], // Массив ID уже забранных SBT
 };
 
+
 // Массив доступных SBT
 let availableSBTs = [
     { id: 6, title: 'SBT #1', link: 'https://t.me/tonton_intract_bot?startapp=vt1ib8', code: 'None', deadline: 'None', image: 'https://sun9-10.userapi.com/s/v1/ig2/v7uSYoNLaG_SkNdkeQU5dsTDco5VWwXgotvMaQpzQiv3KW-8dli80s88rtW9QYpUHPjAc3gsmzRaaEcbd8yp2jK3.jpg?quality=95&crop=0,0,1220,1179&as=32x31,48x46,72x70,108x104,160x155,240x232,360x348,480x464,540x522,640x618,720x696,1080x1044,1220x1179&from=bu&u=nTQVxyFFKpw9MKF0p66mYPQQSGUlusD6Ts6Uk517Xnw&cs=1080x1044' },
     { id: 7, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f4d54156-686e-40e7-8216-769d19615256', code: 'Rode', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
     { id: 8, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=04f370f1-15fc-4637-9450-3109817a0161', code: 'tonhk', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
-    { id: 9, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
-
+    { id: 9, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '2024-11-24 17:00:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
+    { id: 10, title: 'SBT #1', link: 'http://t.me/theontonbot/event?startapp=b950c9c0-7c42-4439-bc67-aa6aeff9ef4f', code: 'Dogs', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/8qRQN_1732272337314_event_image.png' },
+    { id: 15, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=d572d1a2-b101-4358-b802-1ab2124528f3', code: '', deadline: '2024-11-24 18:35:00', image: 'https://storage.onton.live/ontonimage/fOAVY_1732195900030_event_image.png' },
+    { id: 16, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '2024-11-24 17:00:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
+    { id: 17, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=e7b4c370-0b99-4efb-a0c9-b8f5c329c11f', code: 'Tonteleportpower', deadline: '2024-11-25 20:00:00', image: 'https://storage.onton.live/ontonimage/yfpc6_1731369148092_event_image.png' },
+    { id: 18, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WzEsInBvdmVsZHVyZXYiLCI2MjQwNDU4ODE2MjU1NzAiXQ==', code: 'None', deadline: '2024-12-31 19:00:00', image: 'https://static.tbook.vip/img/7d0a98145c234a5e8a803a42f1518fd2' },
+    { id: 19, title: 'SBT #1', link: 'https://society.ton.org/ton-society-x-lovely-legends-sbt-campaign', code: 'None', deadline: '2024-12-31 19:00:00', image: 'https://society.ton.org/_next/image?url=https%3A%2F%2Ftonsociety.s3.eu-central-2.amazonaws.com%2Fe0ad6f05-b8a5-4984-a859-8be72e916ca8.jpg&w=828&q=75' },
+    { id: 20, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WzEsInRib29rLWluY2VudGl2ZSIsIjU4NTM2NDg1ODY0ODg4Il0=', code: 'None', deadline: '2025-12-1 19:00:00', image: 'https://sun9-8.userapi.com/s/v1/ig2/w4TANEpofKvWblCzvcFwWbaJQh1-GsC46l_Hz2Ml_Rp4mnF7h4jY6agf7m-Exev9eLFZTtBQUKKlAIdG1A2gvnxz.jpg?quality=95&crop=0,0,1000,1000&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1000x1000&from=bu&u=CRE8E57nuQwYgeoiBXUwjb43_Pk3Zmh6Dk77S-9XRPQ&cs=640x640' },
+    { id: 21, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WzEsInRvbnNvY2lldHkiLCI1NjEyMDgyNzc3OTE1OSJd', code: 'None', deadline: '2025-01-01 03:00:00', image: 'https://sun9-76.userapi.com/s/v1/ig2/9PI2d3lDyWyu2-juhN5mcIFQyucYaS7XlWxoD96Fl2boRHUcOGoiv2IsmvaskMOd6jwRBKGHrkkyYbAV2pKfnE8D.jpg?quality=95&crop=0,0,1280,1280&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1280x1280&from=bu&u=wA4s4ZUpKZmPByy3akrHusZwjGp7oPXSbnkbuYgcGpM&cs=1080x1080' },
 ];
 
 // Массив предстоящих SBT
 let upcomingSBTs = [
-    { id: 101, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 102, title: 'Upcoming SBT #1', link: 'https://example.com/upcoming1', code: 'UpcomingCode1', releaseDate: '2024-12-01 22:00:00', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
+    { id: 12, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=1d0561fa-3e57-4c20-aa60-7caaa2733cb1', code: '', releaseDate: '2024-11-23 11:30:00', image: 'https://storage.onton.live/ontonimage/hF52I_1732195204401_event_image.png' },
+    { id: 13, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=82594d8b-4d24-43fd-a95f-5d82544ff0b8', code: '', releaseDate: '2024-11-23 14:00:00', image: 'https://storage.onton.live/ontonimage/NwbZI_1732272584181_event_image.png' },
+    { id: 14, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=1ed41568-c02e-406b-a153-328754065628', code: '', releaseDate: '2024-12-16 19:00:00', image: 'https://sun9-59.userapi.com/s/v1/ig2/jIp_ZVV_Z1pvpnxrB2ejscoi5Q3i_WFDtjmIDvnnDpGZJX9AsCBDzN4qcin2kOKBuklPk-0mH3abh22cJGsM6hdF.jpg?quality=95&crop=747,0,1065,1065&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1065x1065&from=bu&u=MR_7mjO2OoumM5qG9kmCL2FNbGuxOtloR5nJUIQKd8U&cs=640x640' },
 ];
 
 // Массив пропущенных SBT
