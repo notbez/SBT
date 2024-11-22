@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express'); // Это строка импорта express
 require('dotenv').config();
 
 const apiToken = process.env.API_TOKEN;
@@ -24,7 +25,7 @@ bot.on('message', (msg) => {
 });
 
 // Создаем веб-сервер (для Render)
-const app = express();
+const app = express();  // Инициализация express
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
