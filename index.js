@@ -22,3 +22,15 @@ bot.on('message', (msg) => {
         });
     }
 });
+
+// Создаем веб-сервер (для Render)
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.send('Telegram Bot is running.');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
