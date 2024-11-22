@@ -1,4 +1,4 @@
-const SBT_VERSION = "1.8"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "2.2"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -9,10 +9,10 @@ let userData = {
 // Массив доступных SBT
 let availableSBTs = [
     { id: 6, title: 'SBT #1', link: 'https://t.me/tonton_intract_bot?startapp=vt1ib8', code: 'None', deadline: 'None', image: 'https://sun9-10.userapi.com/s/v1/ig2/v7uSYoNLaG_SkNdkeQU5dsTDco5VWwXgotvMaQpzQiv3KW-8dli80s88rtW9QYpUHPjAc3gsmzRaaEcbd8yp2jK3.jpg?quality=95&crop=0,0,1220,1179&as=32x31,48x46,72x70,108x104,160x155,240x232,360x348,480x464,540x522,640x618,720x696,1080x1044,1220x1179&from=bu&u=nTQVxyFFKpw9MKF0p66mYPQQSGUlusD6Ts6Uk517Xnw&cs=1080x1044' },
-    { id: 7, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f4d54156-686e-40e7-8216-769d19615256', code: 'Rode', deadline: '22.11.2024 - 02:46', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
-    { id: 8, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=04f370f1-15fc-4637-9450-3109817a0161', code: 'tonhk', deadline: '21.11.2024 - 17:45', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
-    { id: 9, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '24.11.2024 - 17:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
-    
+    { id: 7, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f4d54156-686e-40e7-8216-769d19615256', code: 'Rode', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
+    { id: 8, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=04f370f1-15fc-4637-9450-3109817a0161', code: 'tonhk', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/fuQye_1732189451511_event_image.png' },
+    { id: 9, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=407d6416-d06e-4cff-af6b-f29d27e390eb', code: 'pilottp', deadline: '2024-11-22 13:39:00', image: 'https://storage.onton.live/ontonimage/4Wkhb_1732196821382_event_image.png' },
+
 ];
 
 // Массив предстоящих SBT
@@ -22,14 +22,7 @@ let upcomingSBTs = [
 ];
 
 // Массив пропущенных SBT
-let missedSBTs = [
-    { id: 1, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cd468e61-7fc8-4ae2-afd8-cf805914fb99', code: 'chezahррраваываыв', deadline: '13.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/pOodR_1729732353611_event_image.png' },
-    { id: 2, title: 'SBT #2', link: 'https://t.me/theontonbot/event?startapp=09352665-dde8-4774-8aa8-50c5f8e0fca7', code: 'HLbootcampinsb111', deadline: '15.11.2024 - 22:00', image: 'https://storage.onton.live/ontonimage/DOECh_1729106955387_event_image.png' },
-    { id: 3, title: 'SBT #3', link: 'https://t.me/theontonbot/event?startapp=30bc7aa9-cfd6-45b1-9e57-c201b4c1fa6c', code: 'society', deadline: '31.12.2024 - 21:30', image: 'https://onton.live/template-images/default.webp' },
-    { id: 4, title: 'SBT #4', link: 'https://t.me/theontonbot/event?startapp=2f45b8cb-9bd7-4bd4-acd2-4cf14f2ac5c7', code: 'Society', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/onton/n1XzY_1727712730856_event_image.jpeg' },
-    { id: 5, title: 'SBT #5', link: 'https://t.me/theontonbot/event?startapp=a355b59c-ed6b-41e6-a849-7aa8c72c6481', code: 'Tonytheduck', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/J0l4v_1732007908803_event_image.png' },
-    { id: 5, title: 'SBT #5', link: 'http://t.me/theontonbot/event?startapp=ebc52557-74ad-42ab-a13a-2915844d3fe5', code: 'MondayStarts', deadline: '31.12.2024 - 21:30', image: 'https://storage.onton.live/ontonimage/EQwaY_1731936380974_event_image.png' },
-];
+let missedSBTs = []
 let mySBTs = [];
 
 // Сохранение данных в Local Storage
@@ -50,20 +43,20 @@ const loadSBTData = () => {
 
     if (savedData) {
         const parsedSbtData = JSON.parse(savedData);
-    
+
         if (parsedSbtData.version === SBT_VERSION) {
+            // Убираем из доступных уже завершённые или пропущенные
             availableSBTs = parsedSbtData.availableSBTs.filter(sbt => 
                 !userData.completedSBTIds.includes(sbt.id) && 
                 !userData.missedSBTs.some(missedSBT => missedSBT.id === sbt.id)
             );
-    
+
             missedSBTs = parsedSbtData.missedSBTs || [];
             upcomingSBTs = parsedSbtData.upcomingSBTs || [];
         }
     }
 
-    // Если версия не совпадает или данных нет, сохраняем обновленные массивы
-    saveSBTData();
+    saveSBTData(); // Если версия не совпадает или данных нет, сохраняем обновленные массивы
 }
 
 const saveUserData = () => {
@@ -100,17 +93,32 @@ const loadUserData = () => {
 // Проверка дедлайнов
 function checkDeadlines() {
     const currentDate = new Date();
+
+    // Фильтруем SBT с истекшим дедлайном
     availableSBTs = availableSBTs.filter((sbt) => {
         const sbtDeadline = new Date(sbt.deadline);
+
         if (sbtDeadline < currentDate) {
-            missedSBTs.push(sbt);
-            return false; // Убираем из `availableSBTs`
+            // Проверяем, был ли этот SBT уже забран или пропущен
+            const alreadyMissed = userData.missedSBTs.some(missed => missed.id === sbt.id);
+            const alreadyCompleted = userData.completedSBTIds.includes(sbt.id);
+
+            if (!alreadyMissed && !alreadyCompleted) {
+                userData.missedSBTs.push(sbt); // Перемещаем в missed
+            }
+
+            return false; // Убираем из availableSBTs
         }
-        return true;
+
+        return true; // Оставляем в availableSBTs
     });
-    saveSBTData(); // Сохраняем изменения
+
+    saveSBTData();  // Сохраняем изменения в данных SBT
+    saveUserData(); // Сохраняем пользовательские данные
+
+    // Обновляем отображение списков
     renderSBTs('available-sbt-list', availableSBTs);
-    renderSBTs('missed-sbt-list', missedSBTs);
+    renderSBTs('missed-sbt-list', userData.missedSBTs);
 }
 
 function checkUpcomingReleases() {
@@ -158,10 +166,10 @@ function moveToAvailable(sbtId) {
     if (index !== -1) {
         const sbt = upcomingSBTs.splice(index, 1)[0];
         availableSBTs.push(sbt);
-        
+
         // Сохранение изменений
         saveSBTData();
-        
+
         // Перерисовка вкладок
         renderSBTs('available-sbt-list', availableSBTs);
         renderUpcomingSBTs(); // Обновляем список upcoming для удаления истекшего SBT
@@ -242,7 +250,7 @@ function showSBTFullScreen(sbt) {
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
         <img src="${sbt.image}" alt="SBT Image Fullscreen">
-        
+
         <div class="sbt-info">
             <h2>Guide to obtaining SBT</h2>
             <p style="margin: 10px;">
@@ -284,7 +292,7 @@ function showUpcomingSBTFullScreen(sbt) {
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
         <img src="${sbt.image}" alt="SBT Image Fullscreen" class="blur">
-        
+
         <div class="sbt-info">
             <h2>Upcoming SBT</h2>
             <div class="release"><p><strong>Release Date:</strong> ${sbt.releaseDate}</p></div>
