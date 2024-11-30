@@ -1,4 +1,4 @@
-const SBT_VERSION = "3.7"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "3.8"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -209,6 +209,12 @@ function renderSBTs(listId, sbtArray) {
             });
         }
 
+        if (listId === 'missed-sbt-list') {
+            sbtItem.querySelector('.grab-btn').addEventListener('click', () => {
+                showMissedSBTFullScreen(sbt);
+            });
+        }
+
         listElement.appendChild(sbtItem);
     });
 }
@@ -268,7 +274,7 @@ function showSBTFullScreen(sbt) {
             <p style="margin: 10px;">
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
-            <p id="password-text" style="margin: 10px;">Password: ${sbt.code}</p>
+            <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
             <p style="margin: 10px;">Deadline: ${sbt.deadline}</p>
         </div>
 
@@ -285,7 +291,6 @@ function showSBTFullScreen(sbt) {
     // Кнопка "Complete" для перемещения SBT в "Missed"
     sbtContainer.querySelector('.complete-btn').addEventListener('click', () => {
         onCompleteButtonClick(sbt.id);
-        hideSBTFullScreen();
     });
 
     const passwordElement = sbtContainer.querySelector('#password-text');
@@ -333,6 +338,40 @@ function hideSBTFullScreen() {
     history.back();
 }
 
+function showMissedSBTFullScreen(sbt) {
+    const sbtContainer = document.getElementById('sbt-fullscreen-container');
+    sbtContainer.style.display = 'flex';
+
+    sbtContainer.innerHTML = `
+    <div class="sbt-fullscreen-content">
+        <img src="${sbt.image}" alt="SBT Image Fullscreen">
+
+        <div class="sbt-info">
+            <h2>Missed SBT Details</h2>
+            <p style="margin: 10px;">
+                <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
+            </p>
+            <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
+        </div>
+
+        <div class="button-container">
+            <button class="close-btn">Back to main</button>
+        </div>
+    </div>
+    `;
+
+    // Кнопка "Back to main" для выхода из полноэкранного режима
+    sbtContainer.querySelector('.close-btn').addEventListener('click', hideSBTFullScreen);
+
+    // Возможность копировать код
+    const passwordElement = sbtContainer.querySelector('#password-text');
+    passwordElement.addEventListener('click', () => {
+        navigator.clipboard.writeText(sbt.code)
+            .catch(err => {
+                console.error('Failed to copy password: ', err);
+            });
+    });
+}
 
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => {
@@ -355,20 +394,56 @@ function showSection(sectionId) {
 
 // Обработка нажатия на кнопку "Complete"
 function onCompleteButtonClick(sbtId) {
-    const sbtIndex = availableSBTs.findIndex(sbt => sbt.id === sbtId);
-    if (sbtIndex !== -1) {
-        // Перемещаем SBT в массив missedSBTs
-        const completedSBT = availableSBTs.splice(sbtIndex, 1)[0];
-        userData.missedSBTs.push(completedSBT);
-        userData.completedSBTIds.push(sbtId); // Добавляем ID в завершённые
+    const modal = document.getElementById('confirmation-modal');
+    modal.style.display = 'flex'; // Показать модальное окно
 
-        // Перерисовываем списки
-        renderSBTs('available-sbt-list', availableSBTs);
-        renderSBTs('missed-sbt-list', userData.missedSBTs);
+    // Ссылки на кнопки "Да" и "Отмена"
+    const confirmYes = document.getElementById('confirm-yes');
+    const confirmNo = document.getElementById('confirm-no');
 
-        saveUserData(); // Сохраняем изменения пользователя
-        showSection('main'); // Возвращаемся на главную
-    }
+    // Обработчик для кнопки "Да"
+    const handleConfirmYes = () => {
+        // Логика переноса SBT
+        const sbtIndex = availableSBTs.findIndex(sbt => sbt.id === sbtId);
+        if (sbtIndex !== -1) {
+            const completedSBT = availableSBTs.splice(sbtIndex, 1)[0];
+            userData.missedSBTs.push(completedSBT);
+            userData.completedSBTIds.push(sbtId);
+
+            renderSBTs('available-sbt-list', availableSBTs);
+            renderSBTs('missed-sbt-list', userData.missedSBTs);
+
+            saveUserData(); // Сохраняем изменения
+
+            // Закрываем модальное окно
+            modal.style.display = 'none';
+            // Закрываем полноэкранный режим
+            hideSBTFullScreen();
+            // Переход на главную
+            showSection('main');
+        }
+
+        // Убираем обработчики
+        removeModalEventListeners();
+    };
+
+    // Обработчик для кнопки "Отмена"
+    const handleConfirmNo = () => {
+        // Просто закрыть модальное окно
+        modal.style.display = 'none';
+        // Убираем обработчики
+        removeModalEventListeners();
+    };
+
+    // Функция для удаления обработчиков, чтобы избежать накопления
+    const removeModalEventListeners = () => {
+        confirmYes.removeEventListener('click', handleConfirmYes);
+        confirmNo.removeEventListener('click', handleConfirmNo);
+    };
+
+    // Добавляем обработчики
+    confirmYes.addEventListener('click', handleConfirmYes);
+    confirmNo.addEventListener('click', handleConfirmNo);
 }
 
 // Добавляем обработку свайпа
@@ -386,6 +461,13 @@ function handleTouchEnd(event) {
         backToMain();
     }
 }
+
+const modal = document.getElementById('confirmation-modal');
+modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
 
 document.body.addEventListener('touchstart', handleTouchStart);
 document.body.addEventListener('touchend', handleTouchEnd);
