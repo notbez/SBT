@@ -1,4 +1,4 @@
-const SBT_VERSION = "3.8"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "4.8"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -24,6 +24,19 @@ let availableSBTs = [
     { id: 22, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=74810e16-50cd-4931-a823-0060a21731a4', code: 'first_release', deadline: '2024-11-23 21:00:00', image: 'https://storage.onton.live/ontonimage/P10q0_1732296754777_event_image.png' },
     { id: 23, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=c5c5a6be-85ef-41b1-8f81-d65a484349df', code: 'jimeta', deadline: '2024-11-23 19:00:00', image: 'https://storage.onton.live/ontonimage/UBthj_1732315785209_event_image.png' },
     { id: 24, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=1d0561fa-3e57-4c20-aa60-7caaa2733cb1', code: 'DEVFEST', deadline: '2024-11-23 21:00:00', image: 'https://storage.onton.live/ontonimage/hF52I_1732195204401_event_image.png' },
+    { id: 25, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=24eedd22-e194-4c2f-9ef8-da9340801e28', code: 'GMTONFAM', deadline: '2024-12-16 21:00:00', image: 'https://storage.onton.live/ontonimage/Xqkoo_1733737187844_event_image.png' },
+    { id: 26, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=cac8d3f3-9fc3-4434-8372-52bcce3a9510', code: 'followdragons_on_ton', deadline: '2024-12-14 11:00:00', image: 'https://storage.onton.live/ontonimage/QzzIH_1733401673952_event_image.png' },
+    { id: 27, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=ccd42fd6-9bb1-4b99-b918-4986803c0f4d', code: 'AISTICKER', deadline: '2024-12-13 02:00:00', image: 'https://storage.onton.live/ontonimage/cjFeM_1733429435529_event_image.png' },
+    { id: 28, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=bebc1e48-764f-4f2a-bd5e-0ac0bb91a124', code: 'TPFuture', deadline: '2024-12-13 24:00:00', image: 'https://storage.onton.live/ontonimage/Se0FC_1733406808120_event_image.png' },
+    { id: 29, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=374fc2dc-0566-468e-b775-ce9f9eaef69f', code: '1205', deadline: '2024-12-12 12:00:00', image: 'https://storage.onton.live/ontonimage/whkQa_1733158296745_event_image.png' },
+    { id: 30, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_lambo_639759491696401', code: 'None', deadline: '2024-12-31 19:00:00', image: 'https://static.tbook.vip/img/02cc315eaee34c8fae2b003ae48b556f' },
+    { id: 31, title: 'SBT #1', link: 'https://t.me/GleamRewardsBot/app?startapp=cmM9NDQ0NzM3NjI', code: 'None', deadline: '2024-12-16 23:59:599', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAhugFDAXpurQDVx5KBvwkcfGKZQ-pct3gw&s' },
+    { id: 32, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_goalpixels_638945711692229', code: 'None', deadline: '2025-01-15 19:00:00', image: 'https://static.tbook.vip/img/8853cf58fe404ec688328109a0e984a8' },
+    { id: 33, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_lepasa_638846191691969', code: 'None', deadline: '2025-01-15 19:00:00', image: 'https://static.tbook.vip/img/47ac6c8760d74613a01f71c5270b47ac' },
+    { id: 34, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_ton-band_638865081692007', code: 'None', deadline: '2025-02-15 19:00:00', image: 'https://static.tbook.vip/img/1a738e921ecc42e0bc990900b3ac2e1a' },
+    { id: 35, title: 'SBT #1', link: 'https://t.me/GleamRewardsBot/app?startapp=cmM9NDQ0NzM3NjI', code: 'None', deadline: '2024-12-15 23:59:59', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAhugFDAXpurQDVx5KBvwkcfGKZQ-pct3gw&s' },
+    { id: 36, title: 'SBT #1', link: 'https://t.me/GleamRewardsBot/app?startapp=cmM9NDQ0NzM3NjI', code: 'None', deadline: '2024-12-13 23:59:59', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAhugFDAXpurQDVx5KBvwkcfGKZQ-pct3gw&s' },
+    { id: 37, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=8d188b39-4823-45a1-abc3-f0bfad6c5074', code: 'Dogs', deadline: '2024-12-13 23:59:59', image: 'https://storage.onton.live/ontonimage/sk0A8_1733822367725_event_image.png' },
 
 ];
 
