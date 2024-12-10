@@ -876,9 +876,3 @@ a {
     position: relative;
     overflow: hidden; /* Обрезка содержимого за пределами контейнера */
 }
-
-
-
-html, body {
-    touch-action: none; /* Отключение масштабирования */
-}
