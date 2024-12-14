@@ -534,4 +534,21 @@ function init() {
     showSection('main'); // Отображаем список доступных SBT
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Проверяем поддержку Telegram Web App
+    if (window.Telegram?.WebApp) {
+        // Расширяем приложение на весь экран
+        Telegram.WebApp.expand();
+
+        // Устанавливаем тему (опционально)
+        Telegram.WebApp.setBackgroundColor('#ffffff');
+        Telegram.WebApp.setHeaderColor('bg_color');
+
+        // Лог для отладки
+        console.log('Telegram Web App инициализирован');
+    } else {
+        console.error('Telegram Web App не поддерживается');
+    }
+});
+
 document.addEventListener('DOMContentLoaded', init);
