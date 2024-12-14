@@ -170,13 +170,17 @@ body {
     padding: 0px;
     background-color: #232323;
     color: whitesmoke;
+    background-image: url('snow.png'); /* Укажите путь к вашему изображению */
+    background-size: auto 110%; /* Изображение будет растянуто на весь экран */
+    background-attachment: fixed;
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    background-position: center; /* Центрируем изображение */
 }
 
 header {
     text-align: center;
     padding: 5px 0px ;
     background-color: #232323;
-    box-shadow: 0px 0px 20px
 }
 
 h1 {
@@ -193,6 +197,7 @@ h1 {
     height: 1.5px; /* Толщина линии */
     background-color: #171717; /* Цвет линии */
     box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
+    
 }
 
 
@@ -306,6 +311,11 @@ h1 {
     background: #272727;
     justify-content: center;
     align-items: center;
+    background-image: url('snow.png'); /* Укажите путь к вашему изображению */
+    background-size: auto 110%; /* Изображение будет растянуто на весь экран */
+    background-attachment: fixed;
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    background-position: center; /* Центрируем изображение */
     z-index: 1000;
 }
 
@@ -383,10 +393,11 @@ h1 {
 }
 
 .text {
-    max-width: 70%; /* Максимальная ширина текста */
+    max-width: 60%; /* Максимальная ширина текста */
     text-align: center; /* Центрирование текста внутри блока */
     margin-left: auto; /* Отодвигает текст вправо */
     margin-right: auto; /* Отодвигает текст влево */
+    z-index: 1000;
 }
 
 .logo img {
@@ -396,18 +407,6 @@ h1 {
 
 #missed, #my-sbt {
     display: none; /* Скрываем секции "Missed" и "My SBT" при загрузке */
-}
-
-.jiji{
-    color: #808080;
-    max-width: 260px;
-    margin: 0 auto;
-    margin-top: 60%;
-}
-
-.bukva{
-    font-weight: bold; /* Делает текст жирным */
-    color: whitesmoke; /* Задает цвет текста */
 }
 
 a {
@@ -437,16 +436,16 @@ a {
         text-align: center;
         margin: 0px;
         padding: 0px 0;
-        background-color: #232323;
+        background-color: rgba(255, 0, 0, 0);
         margin-bottom: 0px;
     }
     
     nav button {
         font-size: 120%;
         padding: 5px 10px;
-        margin: 0 1px;
+        margin: 0px;
         border: none;
-        background-color: #232323;
+        background-color: rgba(255, 0, 0, 0);
         color: rgb(156, 156, 156);
         border-radius: 50px;
         cursor: pointer;
@@ -467,13 +466,27 @@ a {
     }
 
     .logo img {
-        max-width: 44px; /* Размер логотипа */
+        max-width: 100%; /* Размер логотипа */
         height: auto;
     }
 
     .logo {
+        position: absolute;
         margin-right: 0px; /* Отступ между логотипом и текстом */
-        margin: 0 0 0 10px;
+        margin: 0 0 0 0px;
+    }
+
+    body{
+        padding: 0px;
+    }
+
+    .elki{
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: -60px;
+        z-index: 1;
+
     }
 
     h1{
@@ -487,6 +500,7 @@ a {
         height: 1.5px; /* Толщина линии */
         background-color: #171717; /* Цвет линии */
         box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
+        z-index: 10;
     }
 
     .grab-btn{
@@ -616,6 +630,7 @@ a {
     }
 
     .logo {
+
         margin-right: 0px; /* Отступ между логотипом и текстом */
         margin: 10px 0px 10px 10px;
     }

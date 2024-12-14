@@ -187,13 +187,15 @@ function startCountdown(releaseDate, countdownElement, sbtId) {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Обновляем текст таймера
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
     }
 
     const interval = setInterval(updateCountdown, 1000);
     updateCountdown(); // Первое обновление сразу
 }
-
 function moveToAvailable(sbtId) {
     const index = upcomingSBTs.findIndex(sbt => sbt.id === sbtId);
     if (index !== -1) {
@@ -252,7 +254,7 @@ function renderUpcomingSBTs() {
 
         sbtItem.innerHTML = `
             <img src="${sbt.image}" alt="SBT Image" class="blur">
-            <div class="countdown"></div> <!-- Элемент для обратного отсчёта -->
+            <div class="countdown" style="background-color: #373737; padding-top: 3px"></div> <!-- Элемент для обратного отсчёта -->
             <button class="grab-btn">Watch</button>
         `;
 
@@ -292,11 +294,11 @@ function showSBTFullScreen(sbt) {
 
         <div class="sbt-info">
             <h2>Guide to obtaining SBT</h2>
-            <p style="margin: 10px;">
+            <p style="margin: 10px; font-family: monospace; font-weight: bold;"> Form - 
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
             <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
-            <p style="margin: 10px;">Deadline: ${sbt.deadline}</p>
+            <p style="margin: 10px; font-family: monospace; font-weight: bold;">Deadline: ${sbt.deadline}</p>
         </div>
 
         <div class="button-container">
@@ -333,8 +335,8 @@ function showUpcomingSBTFullScreen(sbt) {
 
         <div class="sbt-info">
             <h2>Upcoming SBT</h2>
-            <div class="release"><p><strong>Release Date:</strong> ${sbt.releaseDate}</p></div>
-            <div class="countdown2" id="fullscreen-countdown"><strong>ReLoading countdown...</div>
+            <div class="release"><p font-family: monospace; font-weight: bold;>Release Date: ${sbt.releaseDate}</p></div>
+            <div class="countdown2" style="background: #232323" id="fullscreen-countdown"><strong>ReLoading countdown...</div>
         </div>
 
         <div class="button-container">
@@ -369,7 +371,7 @@ function showMissedSBTFullScreen(sbt) {
 
         <div class="sbt-info">
             <h2>Missed SBT Details</h2>
-            <p style="margin: 10px;">
+            <p style="margin: 10px; font-family: monospace; font-weight: bold;">Form - 
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
             <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
