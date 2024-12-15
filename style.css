@@ -175,12 +175,40 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat; /* Изображение не будет повторяться */
     background-position: center; /* Центрируем изображение */
+    overflow-x: hidden;
 }
 
 header {
     text-align: center;
     padding: 5px 0px ;
     background-color: #232323;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 7px 10px rgba(13, 13, 13, 0.5);
+}
+
+/* Контейнер для изображения */
+/* Контейнер для изображения */
+.image-container {
+    position: sticky; /* Липкость при скролле */
+    top: 0; /* Начинаем от самого верха */
+    z-index: 5;
+    width: 100vw; /* Устанавливаем ширину контейнера на всю ширину окна */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-top: 0px; /* Сдвигаем изображение вверх */
+}
+
+/* Изображение */
+.image-container img {
+    width: 120vw; /* Увеличиваем ширину изображения за пределы окна */
+    max-height: 500px; /* Ограничиваем высоту */
+    object-fit: cover; /* Избегаем искажения пропорций */
 }
 
 h1 {
@@ -192,12 +220,12 @@ h1 {
 /* Линия под заголовком */
 .header-line {
     width: 100%; /* Занимает всю доступную ширину */
-    margin: 5px 0px 20px 0px; /* Убираем отступ слева */
+    margin: 0px 0px 0px 0px; /* Убираем отступ слева */
     border: none; /* Убираем стандартные границы */
     height: 1.5px; /* Толщина линии */
-    background-color: #171717; /* Цвет линии */
+    background-color: #dd0f0f; /* Цвет линии */
     box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
-    
+    z-index: 1000;
 }
 
 
@@ -500,7 +528,7 @@ a {
         height: 1.5px; /* Толщина линии */
         background-color: #171717; /* Цвет линии */
         box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
-        z-index: 10;
+        z-index: 1000;
     }
 
     .grab-btn{
@@ -646,6 +674,7 @@ a {
         height: 1.5px; /* Толщина линии */
         background-color: #171717; /* Цвет линии */
         box-shadow: 0 2px 3px rgba(13, 13, 13, 0.5);
+        z-index: 1000;
     }
 
     .grab-btn{
@@ -788,6 +817,7 @@ a {
         height: 2.5px; /* Толщина линии */
         background-color: #171717; /* Цвет линии */
         box-shadow: 0 2px 5px rgba(38, 38, 38, 0.5);
+        z-index: 1000;
     }
 
     .grab-btn{
@@ -890,4 +920,21 @@ a {
 .sbt-item {
     position: relative;
     overflow: hidden; /* Обрезка содержимого за пределами контейнера */
+}
+
+.elka{
+    width: 100%;
+    height: auto;
+}
+
+
+.cook{
+    max-width: 3%;
+    
+}
+
+.el{
+    position: absolute;
+    max-width: 90%;
+    display: flex;
 }

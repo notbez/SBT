@@ -290,15 +290,20 @@ function showSBTFullScreen(sbt) {
 
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
+
+        <img src="elа.png" alt="Logo" class="el">
         <img src="${sbt.image}" alt="SBT Image Fullscreen">
 
         <div class="sbt-info">
             <h2>Guide to obtaining SBT</h2>
-            <p style="margin: 10px; font-family: monospace; font-weight: bold;"> Form - 
+            <p style="margin: 10px; font-weight: bold; "> 
+            <img src="cookie.png" alt="Logo" class="cook"> Form - 
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
-            <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
-            <p style="margin: 10px; font-family: monospace; font-weight: bold;">Deadline: ${sbt.deadline}</p>
+            <p id="password-text" style="margin: 10px; font-weight: bold;">
+            <img src="cookie.png" alt="Logo" class="cook"> Password: ${sbt.code}</p>
+            <p style="margin: 10px; font-weight: bold;">
+             <img src="cookie.png" alt="Logo" class="cook"> Deadline: ${sbt.deadline}</p>
         </div>
 
         <div class="button-container">
@@ -335,8 +340,10 @@ function showUpcomingSBTFullScreen(sbt) {
 
         <div class="sbt-info">
             <h2>Upcoming SBT</h2>
-            <div class="release"><p font-family: monospace; font-weight: bold;>Release Date: ${sbt.releaseDate}</p></div>
-            <div class="countdown2" style="background: #232323" id="fullscreen-countdown"><strong>ReLoading countdown...</div>
+            <div class="release"><p style="font-weight: bold;">
+            <img src="cookie.png" alt="Logo" class="cook"> Release Date: ${sbt.releaseDate}</p></div>
+            <div style="font-weight: bold;" class="countdown2" style="background-color: #232323" id="fullscreen-countdown"><strong>
+            <img src="cookie.png" alt="Logo" class="cook"> ReLoading countdown...</div>
         </div>
 
         <div class="button-container">
@@ -367,14 +374,17 @@ function showMissedSBTFullScreen(sbt) {
 
     sbtContainer.innerHTML = `
     <div class="sbt-fullscreen-content">
+        <img src="elа.png" alt="Logo" class="el">
         <img src="${sbt.image}" alt="SBT Image Fullscreen">
 
         <div class="sbt-info">
             <h2>Missed SBT Details</h2>
-            <p style="margin: 10px; font-family: monospace; font-weight: bold;">Form - 
+            <p style="margin: 10px; font-weight: bold;">
+            <img src="cookie.png" alt="Logo" class="cook"> Form - 
                 <a href="${sbt.link}" target="_blank" rel="noopener noreferrer">Link to SBT</a>
             </p>
-            <p id="password-text" style="margin: 10px; font-family: monospace; font-weight: bold;">Password: ${sbt.code}</p>
+            <p id="password-text" style="margin: 10px; font-weight: bold;">
+             <img src="cookie.png" alt="Logo" class="cook"> Password: ${sbt.code}</p>
         </div>
 
         <div class="button-container">
