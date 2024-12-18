@@ -501,7 +501,7 @@ a {
     .logo {
         position: absolute;
         margin-right: 0px; /* Отступ между логотипом и текстом */
-        margin: 0 0 0 0px;
+        margin: 15px 0 0 0px;
     }
 
     body{
@@ -653,14 +653,14 @@ a {
     }
 
     .logo img {
-        max-width: 54px; /* Размер логотипа */
+        max-width: 100%; /* Размер логотипа */
         height: auto;
     }
 
     .logo {
 
         margin-right: 0px; /* Отступ между логотипом и текстом */
-        margin: 10px 0px 10px 10px;
+        margin: 24px 0px 0px 0px;
     }
 
     h1{
@@ -797,13 +797,13 @@ a {
     }
 
     .logo img {
-        max-width: 64px; /* Размер логотипа */
+        max-width: 100%; /* Размер логотипа */
         height: auto;
     }
 
     .logo {
         margin-right: 0px; /* Отступ между логотипом и текстом */
-        margin: 10px 0px 10px 20px;
+        margin: 35px 0px 0px 0px;
     }
 
     h1{

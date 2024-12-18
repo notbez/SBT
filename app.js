@@ -1,4 +1,4 @@
-const SBT_VERSION = "5.1"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "5.3"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -46,6 +46,16 @@ let availableSBTs = [
     { id: 44, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=6764ed2c-5bfb-42d0-89df-3267adcf59ec', code: 'TPineverypocket', deadline: '2024-12-19 20:00:00', image: 'https://storage.onton.live/ontonimage/KiVeZ_1734010733975_event_image.png' },
     { id: 45, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=f54d821f-ea63-488f-83a6-3b3ac21a43b7', code: 'Looftaisthebest', deadline: '2024-12-15 20:00:00', image: 'https://storage.onton.live/ontonimage/3CCxZ_1734004380673_event_image.jpeg' },
     { id: 46, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=c5fba7fe-3f41-4b98-b1f5-55405d968cd5', code: 'wonton', deadline: '2024-12-15 18:35:00', image: 'https://storage.onton.live/ontonimage/FGDuq_1734017693439_event_image.png' },
+    { id: 47, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwiYXVyYSIsIjY0NTc3MTM1MTcyOTMyOCJd', code: 'none', deadline: '2025-27-02 19:00:00', image: 'https://static.tbook.vip/img/e036316ebf2b43b19adc140af6a24670' },
+    { id: 48, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwidG90aGVtb28iLCI2NDQ5NTc4MDE3MjQwOTYiXQ', code: 'none', deadline: '2024-30-12 19:00:00', image: 'https://static.tbook.vip/img/ed61e5620faa414f9e6566317510d8db' },
+    { id: 49, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=244322dc-bbbe-4eb8-878f-016362ed47c4', code: 'monday16start', deadline: '2024-22-12 17:00:00', image: 'https://storage.onton.live/ontonimage/GYxHq_1734356658000_event_image.png' },
+    { id: 50, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=50842161-741d-477c-962f-cd84eefce2ae', code: 'Liquid_HYDRA/farmer', deadline: '2024-25-12 18:18:00', image: 'https://storage.onton.live/ontonimage/cx3u6_1734275725059_event_image.jpeg' },
+    { id: 51, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=feec872b-8140-4f24-aef5-40db3f18d28d', code: 'tonfish', deadline: '2024-22-12 02:23:00', image: 'https://storage.onton.live/ontonimage/Mqqzr_1734304955574_event_image.png' },
+    { id: 52, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=872b645f-df68-49a9-be1c-3da230b43313', code: 'TSBlum', deadline: '2024-18-12 18:00:00', image: 'https://storage.onton.live/ontonimage/GTVlT_1734102505609_event_image.png' },
+    { id: 53, title: 'SBT #1', link: 'https://t.me/GleamRewardsBot/app?startapp=cmM9NDQ0NzM3NjI', code: 'none', deadline: '2025-02-01 00:00:00', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAhugFDAXpurQDVx5KBvwkcfGKZQ-pct3gw&s' },
+    { id: 54, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=0a79f2c8-39a9-4a90-84f2-fd3ae314e6f6', code: 'Toxonton', deadline: '2024-24-12 16:47:00', image: 'https://storage.onton.live/ontonimage/jZ5Ea_1734429913500_event_image.png' },
+    { id: 55, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwidG9uLWZpc2giLCI2NDM5MTM2NDE3MTg1ODMiXQ', code: 'wonton', deadline: '2025-09-01 19:00:00', image: 'https://static.tbook.vip/img/961bbf473b4c401888a2f2946779e034' },
+    { id: 56, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_goalpixels_638945711692229', code: 'wonton', deadline: '2025-15-01 19:00:00', image: 'https://static.tbook.vip/img/8853cf58fe404ec688328109a0e984a8' },
 ];
 
 // Массив предстоящих SBT
