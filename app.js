@@ -1,4 +1,4 @@
-const SBT_VERSION = "5.3"; // Увеличьте версию при добавлении SBT
+const SBT_VERSION = "5.4"; // Увеличьте версию при добавлении SBT
 
 // Данные пользователя
 let userData = {
@@ -56,6 +56,11 @@ let availableSBTs = [
     { id: 54, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=0a79f2c8-39a9-4a90-84f2-fd3ae314e6f6', code: 'Toxonton', deadline: '2024-24-12 16:47:00', image: 'https://storage.onton.live/ontonimage/jZ5Ea_1734429913500_event_image.png' },
     { id: 55, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwidG9uLWZpc2giLCI2NDM5MTM2NDE3MTg1ODMiXQ', code: 'wonton', deadline: '2025-09-01 19:00:00', image: 'https://static.tbook.vip/img/961bbf473b4c401888a2f2946779e034' },
     { id: 56, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=1_goalpixels_638945711692229', code: 'wonton', deadline: '2025-15-01 19:00:00', image: 'https://static.tbook.vip/img/8853cf58fe404ec688328109a0e984a8' },
+    { id: 42, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwidGJvb2staW5jZW50aXZlIiwiNjQ2NTU0NzAxNzM5MTExIl0', code: 'none', deadline: '2031-12-30 23:59:59', image: 'https://static.tbook.vip/img/4ddd7f553c984840b9507e55714c7527' },
+    { id: 43, title: 'SBT #1', link: 'https://t.me/tbook_incentive_bot/tbook?startapp=WyIxIiwidGJvb2staW5jZW50aXZlIiwiNjQ2NTkzNTkxNzQwMDQxIl0', code: 'none', deadline: '2031-12-30 23:59:59', image: 'https://static.tbook.vip/img/4ddd7f553c984840b9507e55714c7527' },
+    { id: 44, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=53ae79a4-e54c-4294-9a17-d346aec31066', code: 'B.appkarulez', deadline: '2024-22-12 20:00:00', image: 'https://storage.onton.live/ontonimage/sSk55_1734530228853_event_image.png' },
+    { id: 45, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=9b66e543-c74a-4e15-81f1-5b8898b6093b', code: 'drops2025', deadline: '2024-20-12 18:00:00', image: 'https://storage.onton.live/ontonimage/C1qNQ_1734509835428_event_image.jpeg' },
+    { id: 46, title: 'SBT #1', link: 'https://t.me/theontonbot/event?startapp=0cb126ab-89aa-4178-9893-36f2d60c2163', code: 'CryptoQueenOnTON', deadline: '2024-19-12 14:00:00', image: 'https://storage.onton.live/ontonimage/c5XGM_1734443980682_event_image.png' },
 ];
 
 // Массив предстоящих SBT
