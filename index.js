@@ -12,6 +12,13 @@ const usersFilePath = './users.json';
 const bot = new TelegramBot(apiToken, { polling: true });
 const app = express();
 const PORT = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/telegramBot';
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 
 // Убедимся, что файл с пользователями существует
@@ -39,17 +46,36 @@ function saveUser(chatId) {
 }
 
 // Команда /start
-bot.on('message', (msg) => {
+const User = require('./models/User'); // Импорт модели
+
+bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
 
     // Сохраняем пользователя
-    saveUser(chatId);
+    try {
+        const existingUser = await User.findOne({ chatId });
+
+        if (!existingUser) {
+            await User.create({
+                chatId: chatId,
+                username: msg.from.username,
+                firstName: msg.from.first_name,
+                lastName: msg.from.last_name,
+            });
+
+            console.log(`User ${chatId} has been added.`);
+        } else {
+            console.log(`User ${chatId} already exists.`);
+        }
+    } catch (err) {
+        console.error('Error saving user:', err);
+    }
 
     if (msg.text === '/start') {
         bot.sendMessage(chatId, '🎅 Ho ho ho, in the Happy New Year! Click the button below to open the app.', {
             reply_markup: {
                 inline_keyboard: [[{
-                    text: 'Открыть приложение',
+                    text: 'Open app',
                     web_app: { url: webAppUrl }
                 }]]
             }
@@ -107,6 +133,29 @@ We will appreciate and appreciate any support from you.`;
 //        });
 //    });
 //});
+
+
+bot.onText(/\/users/, async (msg) => {
+    const adminId = YOUR_ADMIN_ID; // Замените на ваш Telegram ID
+
+    if (msg.chat.id !== adminId) {
+        return bot.sendMessage(msg.chat.id, 'У вас нет доступа к этой команде.');
+    }
+
+    try {
+        const users = await User.find({});
+        const userCount = users.length;
+
+        const userList = users.map(user => 
+            `ID: ${user.chatId}, Name: ${user.firstName || ''} ${user.lastName || ''}, Username: @${user.username || 'N/A'}`
+        ).join('\n');
+
+        bot.sendMessage(adminId, `Пользователей: ${userCount}\n\n${userList}`);
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        bot.sendMessage(adminId, 'Ошибка при получении списка пользователей.');
+    }
+});
 
 // Уведомление подписчиков
 function notifySubscribers() {
