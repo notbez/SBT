@@ -136,7 +136,7 @@ We will appreciate and appreciate any support from you.`;
 
 
 bot.onText(/\/users/, async (msg) => {
-    const adminId = YOUR_ADMIN_ID; // Замените на ваш Telegram ID
+    const adminId = 7130123407; // Замените на ваш Telegram ID
 
     if (msg.chat.id !== adminId) {
         return bot.sendMessage(msg.chat.id, 'У вас нет доступа к этой команде.');
